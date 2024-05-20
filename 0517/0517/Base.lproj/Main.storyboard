@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a0Z-l6-Jsg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rv1-s6-6lz">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -732,6 +733,144 @@
             </objects>
             <point key="canvasLocation" x="-408" y="1751"/>
         </scene>
+        <!--Ka Kao View Controller-->
+        <scene sceneID="axD-mu-B9g">
+            <objects>
+                <viewController id="rv1-s6-6lz" customClass="KaKaoViewController" customModule="_517" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z1Y-dP-O9F">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="cNC-wz-lrr">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bgw-rB-xUj">
+                                <rect key="frame" x="10" y="59" width="72" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Bgw-rB-xUj" secondAttribute="height" multiplier="36:11" id="Gkv-9o-43j"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button" image="xmark" catalog="system"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDw-zI-Ree">
+                                <rect key="frame" x="244" y="59" width="149" height="34.333333333333343"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7j-Z8-5eB">
+                                        <rect key="frame" x="0.0" y="0.0" width="49.666666666666664" height="34.333333333333336"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="trash.slash.circle" catalog="system"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29o-Ec-CDK">
+                                        <rect key="frame" x="49.666666666666686" y="0.0" width="49.666666666666657" height="34.333333333333336"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="moon.circle.fill" catalog="system"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1K-7e-88F">
+                                        <rect key="frame" x="99.333333333333314" y="0.0" width="49.666666666666657" height="34.333333333333336"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="thermometer.snowflake.circle" catalog="system"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pink" translatesAutoresizingMaskIntoConstraints="NO" id="27z-xk-6be">
+                                <rect key="frame" x="121.66666666666669" y="443.33333333333326" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="27z-xk-6be" secondAttribute="height" multiplier="1:1" id="mHc-fa-6Yu"/>
+                                    <constraint firstAttribute="height" constant="150" id="yrC-wl-SZW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="김수경" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47y-pj-EGz">
+                                <rect key="frame" x="162.66666666666666" y="601.33333333333337" width="67.666666666666657" height="31.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vmc-mW-xtI">
+                                <rect key="frame" x="30" y="682.66666666666663" width="333" height="40.666666666666629"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wba-7C-pPX">
+                                        <rect key="frame" x="0.0" y="0.0" width="104.33333333333333" height="40.666666666666664"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s0L-UU-a2x">
+                                                <rect key="frame" x="0.0" y="1.3333333333333339" width="104.33333333333333" height="19.333333333333329"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <imageReference key="image" image="bubble" catalog="system" symbolScale="default"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나와의 채팅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5g-nE-I3r">
+                                                <rect key="frame" x="0.0" y="20.333333333333371" width="104.33333333333333" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PXD-Wb-Ptw">
+                                        <rect key="frame" x="114.33333333333334" y="0.0" width="104.33333333333334" height="40.666666666666664"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FOI-Fd-Zrq">
+                                                <rect key="frame" x="0.0" y="2.6666666666666652" width="104.33333333333333" height="15.333333333333336"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로필 편집" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCR-IO-tyA">
+                                                <rect key="frame" x="0.0" y="20.333333333333371" width="104.33333333333333" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="X7l-6a-Y2a">
+                                        <rect key="frame" x="228.66666666666671" y="0.0" width="104.33333333333334" height="40.666666666666664"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Lem-mc-vnu">
+                                                <rect key="frame" x="0.0" y="1.3333333333333321" width="104.33333333333333" height="18"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카카오 스토리" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1s-zf-bou">
+                                                <rect key="frame" x="0.0" y="20.333333333333371" width="104.33333333333333" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qJV-5C-pBC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Vmc-mW-xtI" firstAttribute="top" secondItem="47y-pj-EGz" secondAttribute="bottom" constant="50" id="3xe-Pb-AxG"/>
+                            <constraint firstItem="cNC-wz-lrr" firstAttribute="leading" secondItem="qJV-5C-pBC" secondAttribute="leading" id="AYI-RA-vDf"/>
+                            <constraint firstItem="cNC-wz-lrr" firstAttribute="top" secondItem="Z1Y-dP-O9F" secondAttribute="top" id="I0H-BY-Y6k"/>
+                            <constraint firstItem="Bgw-rB-xUj" firstAttribute="leading" secondItem="qJV-5C-pBC" secondAttribute="leading" constant="10" id="Jtm-Gc-p17"/>
+                            <constraint firstAttribute="bottom" secondItem="cNC-wz-lrr" secondAttribute="bottom" id="RkO-DQ-Xlc"/>
+                            <constraint firstItem="Vmc-mW-xtI" firstAttribute="leading" secondItem="qJV-5C-pBC" secondAttribute="leading" constant="30" id="SwP-sn-8T7"/>
+                            <constraint firstItem="yDw-zI-Ree" firstAttribute="top" secondItem="qJV-5C-pBC" secondAttribute="top" id="VCV-GY-QrK"/>
+                            <constraint firstItem="47y-pj-EGz" firstAttribute="centerX" secondItem="Z1Y-dP-O9F" secondAttribute="centerX" id="b4N-Jn-PeX"/>
+                            <constraint firstItem="27z-xk-6be" firstAttribute="centerX" secondItem="Z1Y-dP-O9F" secondAttribute="centerX" id="f65-jA-6bK"/>
+                            <constraint firstItem="qJV-5C-pBC" firstAttribute="trailing" secondItem="Vmc-mW-xtI" secondAttribute="trailing" constant="30" id="jbw-DE-0kf"/>
+                            <constraint firstItem="Vmc-mW-xtI" firstAttribute="centerX" secondItem="Z1Y-dP-O9F" secondAttribute="centerX" id="may-uz-QKt"/>
+                            <constraint firstItem="yDw-zI-Ree" firstAttribute="trailing" secondItem="qJV-5C-pBC" secondAttribute="trailing" id="phw-a6-NnX"/>
+                            <constraint firstItem="27z-xk-6be" firstAttribute="top" secondItem="yDw-zI-Ree" secondAttribute="bottom" constant="350" id="qc9-Y7-Tmh"/>
+                            <constraint firstItem="qJV-5C-pBC" firstAttribute="trailing" secondItem="cNC-wz-lrr" secondAttribute="trailing" id="s7b-QE-yro"/>
+                            <constraint firstItem="47y-pj-EGz" firstAttribute="top" secondItem="27z-xk-6be" secondAttribute="bottom" constant="8" id="tHY-0v-Bev"/>
+                            <constraint firstItem="Bgw-rB-xUj" firstAttribute="top" secondItem="qJV-5C-pBC" secondAttribute="top" id="xNg-E2-ggs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="cNC-wz-lrr" id="7Ul-Ru-yGq"/>
+                        <outlet property="profileImageView" destination="27z-xk-6be" id="uzY-yl-tax"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hnH-at-svt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1853" y="989"/>
+        </scene>
         <!--Search View Controller-->
         <scene sceneID="4LX-oL-cFN">
             <objects>
@@ -1111,13 +1250,22 @@
     <resources>
         <image name="arrow.down.circle" catalog="system" width="128" height="123"/>
         <image name="background" width="300" height="300"/>
+        <image name="bubble" catalog="system" width="128" height="110"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="icon" width="382" height="364"/>
+        <image name="moon.circle.fill" catalog="system" width="128" height="123"/>
         <image name="moonphase.new.moon" catalog="system" width="128" height="123"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="pink" width="24" height="24"/>
         <image name="play" width="24" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="questionmark" catalog="system" width="94" height="128"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
+        <image name="thermometer.snowflake.circle" catalog="system" width="128" height="123"/>
         <image name="top10 badge" width="17" height="24"/>
+        <image name="trash.slash.circle" catalog="system" width="128" height="123"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="비질란테" width="440" height="660"/>
         <image name="육사오" width="440" height="660"/>
         <image name="콘크리트유토피아" width="440" height="660"/>

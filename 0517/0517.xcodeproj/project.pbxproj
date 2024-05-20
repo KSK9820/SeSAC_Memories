@@ -11,6 +11,7 @@
 		5345E5DE2BFB2C3200DAB72A /* NetflixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5345E5DD2BFB2C3200DAB72A /* NetflixViewController.swift */; };
 		5345E5E02BFB374800DAB72A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5345E5DF2BFB374800DAB72A /* SearchViewController.swift */; };
 		5345E5E22BFB3FE500DAB72A /* SaveContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5345E5E12BFB3FE500DAB72A /* SaveContentViewController.swift */; };
+		535018062BFBA825005101E9 /* KaKaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535018052BFBA825005101E9 /* KaKaoViewController.swift */; };
 		539E7E8B2BF8D4440069D28B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E7E8A2BF8D4440069D28B /* AppDelegate.swift */; };
 		539E7E8D2BF8D4440069D28B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E7E8C2BF8D4440069D28B /* SceneDelegate.swift */; };
 		539E7E8F2BF8D4440069D28B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E7E8E2BF8D4440069D28B /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 		5345E5DD2BFB2C3200DAB72A /* NetflixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixViewController.swift; sourceTree = "<group>"; };
 		5345E5DF2BFB374800DAB72A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5345E5E12BFB3FE500DAB72A /* SaveContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveContentViewController.swift; sourceTree = "<group>"; };
+		535018052BFBA825005101E9 /* KaKaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoViewController.swift; sourceTree = "<group>"; };
 		539E7E872BF8D4440069D28B /* 0517.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 0517.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		539E7E8A2BF8D4440069D28B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		539E7E8C2BF8D4440069D28B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				5345E5DF2BFB374800DAB72A /* SearchViewController.swift */,
 				5345E5E12BFB3FE500DAB72A /* SaveContentViewController.swift */,
 				53060A0D2BFB471E00484396 /* SignInViewController.swift */,
+				535018052BFBA825005101E9 /* KaKaoViewController.swift */,
 			);
 			path = 0517;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				535018062BFBA825005101E9 /* KaKaoViewController.swift in Sources */,
 				539E7E9F2BF8D4C20069D28B /* EmotionDiaryViewController.swift in Sources */,
 				5345E5E02BFB374800DAB72A /* SearchViewController.swift in Sources */,
 				5345E5DE2BFB2C3200DAB72A /* NetflixViewController.swift in Sources */,
