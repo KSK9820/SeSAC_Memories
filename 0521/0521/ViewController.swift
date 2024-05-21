@@ -122,19 +122,34 @@ class ViewController: UIViewController {
     @IBAction func randomButtonTapped(_ sender: UIButton) {
         guard let height = (50...250).randomElement() else { return }
         guard let weight = (20...200).randomElement() else { return }
-        
+
         let bmi = String(format: "%.2f", Double(weight) / pow(Double(height) * 0.01, 2))
-        
+
         showAlert(height: height, weight: weight, bmi: bmi)
+    }
+    
+    private func setBodyFatStatus(bmi: Double) -> String {
+        var status = ""
         
+        if bmi < 18.5 {
+            status = "저체중"
+        } else if bmi < 23 {
+            status = "정상"
+        } else if bmi < 25 {
+            status = "과체중"
+        } else {
+            status = "비만"
+        }
+        
+        return status
     }
     
     private func showAlert(height: Int, weight: Int, bmi: String) {
+        guard let bmi = Double(bmi) else { return }
         let alert = UIAlertController(
-            title: "키: \(height) 몸무게: \(weight)",
-            message: "당신의 bmi는 \(bmi)입니다.",
+            title: setBodyFatStatus(bmi: bmi),
+            message: "키: \(height) 몸무게: \(weight) bmi: \(bmi)입니다.",
             preferredStyle: .alert)
-        
         
         let ok = UIAlertAction(
             title: "확인",
