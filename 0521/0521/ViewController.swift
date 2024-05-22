@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     
     @IBOutlet var characterImageView: UIImageView!
     
+    @IBOutlet var nickNameTextField: UITextField!
+    
     @IBOutlet var roundedHeightView: UIView!
     @IBOutlet var heightTextField: UITextField!
     @IBOutlet var cautionHeightLabel: UILabel!
@@ -74,14 +76,6 @@ class ViewController: UIViewController {
         resultButton.setTitleColor(.white, for: .normal)
         resultButton.backgroundColor = .systemPurple
         resultButton.layer.cornerRadius = 20
-    }
-    
-    private func checkHeightValidity() -> Bool  {
-        guard let height = heightTextField.text else { return false }
-
-        
-        
-        return true
     }
     
     
@@ -161,6 +155,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func resultButtonTapped(_ sender: UIButton) {
+        guard let nickname = nickNameTextField.text else { return }
         
         if !cautionHeightLabel.isHidden || !cautionWeightLabel.isHidden {
             return
@@ -173,6 +168,7 @@ class ViewController: UIViewController {
               let weight = Int(wInput)
         else { return }
         
+        UserDefaults.standard.setValue(nickname, forKey: "name")
         UserDefaults.standard.setValue(height, forKey: "height")
         UserDefaults.standard.setValue(weight, forKey: "weight")
         
@@ -181,6 +177,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func loadDataButtonTapped(_ sender: UIButton) {
+        if let name = UserDefaults.standard.object(forKey: "name") {
+            nickNameTextField.text = "\(name)"
+        }
         if let height = UserDefaults.standard.object(forKey: "height") {
             heightTextField.text = "\(height)"
         }
@@ -188,5 +187,18 @@ class ViewController: UIViewController {
             weightTextField.text = "\(weight)"
         }
     }
+    
+    
+    @IBAction func resetButtonTapped(_ sender: UIButton) {
+        
+        UserDefaults.standard.setValue(nil, forKey: "name")
+        UserDefaults.standard.setValue(nil, forKey: "height")
+        UserDefaults.standard.setValue(nil, forKey: "weight")
+        
+        
+        heightTextField.text = ""
+        weightTextField.text = ""
+        nickNameTextField.text = ""
+    }
+    
 }
-
