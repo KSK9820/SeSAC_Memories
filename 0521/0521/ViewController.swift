@@ -173,8 +173,20 @@ class ViewController: UIViewController {
               let weight = Int(wInput)
         else { return }
         
+        UserDefaults.standard.setValue(height, forKey: "height")
+        UserDefaults.standard.setValue(weight, forKey: "weight")
+        
         let bmi = String(format: "%.2f", Double(weight) / pow(Double(height) * 0.01, 2))
         showAlert(height: height, weight: weight, bmi: bmi)
+    }
+    
+    @IBAction func loadDataButtonTapped(_ sender: UIButton) {
+        if let height = UserDefaults.standard.object(forKey: "height") {
+            heightTextField.text = "\(height)"
+        }
+        if let weight = UserDefaults.standard.object(forKey: "weight") {
+            weightTextField.text = "\(weight)"
+        }
     }
 }
 

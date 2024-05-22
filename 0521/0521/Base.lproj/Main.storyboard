@@ -118,6 +118,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fkl-WP-OtF">
+                                <rect key="frame" x="20" y="649.33333333333337" width="353" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="저장된 값 불러오기"/>
+                                <connections>
+                                    <action selector="loadDataButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HYc-Oe-YQo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -125,6 +133,7 @@
                             <constraint firstItem="Xan-om-ix0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="0V9-KI-cjY"/>
                             <constraint firstItem="Xan-om-ix0" firstAttribute="top" secondItem="ZjM-qX-5OI" secondAttribute="bottom" constant="100" id="15r-GS-CNX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QHo-QP-zHE" secondAttribute="trailing" constant="20" id="6LR-yi-bmY"/>
+                            <constraint firstItem="Fkl-WP-OtF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8Ur-NJ-w90"/>
                             <constraint firstItem="ZjM-qX-5OI" firstAttribute="top" secondItem="35g-Ca-tea" secondAttribute="bottom" constant="10" id="9m0-i5-Kyg"/>
                             <constraint firstItem="aC1-VQ-4Wz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="ADO-ar-wNy"/>
                             <constraint firstItem="QHo-QP-zHE" firstAttribute="top" secondItem="VXZ-GF-7XZ" secondAttribute="bottom" constant="10" id="Adm-sJ-dfM"/>
@@ -148,6 +157,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OUB-gD-HxV" secondAttribute="trailing" constant="20" id="nwn-qr-zAh"/>
                             <constraint firstItem="MN1-gJ-wt3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="pty-cW-HWX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xan-om-ix0" secondAttribute="trailing" constant="20" id="qvr-dy-MNf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fkl-WP-OtF" secondAttribute="trailing" constant="20" id="rGO-fO-lav"/>
+                            <constraint firstItem="Fkl-WP-OtF" firstAttribute="top" secondItem="Xan-om-ix0" secondAttribute="bottom" constant="20" id="v6V-dK-Kzc"/>
                         </constraints>
                     </view>
                     <connections>
