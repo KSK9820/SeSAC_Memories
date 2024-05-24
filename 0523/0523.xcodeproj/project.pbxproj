@@ -15,6 +15,7 @@
 		533381DD2BFF2356005C3C5E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 533381DC2BFF2356005C3C5E /* Base */; };
 		533381E52BFF2424005C3C5E /* SecondTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533381E42BFF2424005C3C5E /* SecondTableViewController.swift */; };
 		533381E72BFF242E005C3C5E /* ThirdTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533381E62BFF242E005C3C5E /* ThirdTableViewController.swift */; };
+		5354EF412C002EE900D575D7 /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5354EF402C002EE900D575D7 /* ShoppingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		533381DE2BFF2356005C3C5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		533381E42BFF2424005C3C5E /* SecondTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTableViewController.swift; sourceTree = "<group>"; };
 		533381E62BFF242E005C3C5E /* ThirdTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTableViewController.swift; sourceTree = "<group>"; };
+		5354EF402C002EE900D575D7 /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				533381D62BFF2355005C3C5E /* Main.storyboard */,
 				533381E42BFF2424005C3C5E /* SecondTableViewController.swift */,
 				533381E62BFF242E005C3C5E /* ThirdTableViewController.swift */,
+				5354EF402C002EE900D575D7 /* ShoppingTableViewCell.swift */,
 				533381D92BFF2356005C3C5E /* Assets.xcassets */,
 				533381DB2BFF2356005C3C5E /* LaunchScreen.storyboard */,
 				533381DE2BFF2356005C3C5E /* Info.plist */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				533381D52BFF2355005C3C5E /* ViewController.swift in Sources */,
+				5354EF412C002EE900D575D7 /* ShoppingTableViewCell.swift in Sources */,
 				533381E52BFF2424005C3C5E /* SecondTableViewController.swift in Sources */,
 				533381D12BFF2355005C3C5E /* AppDelegate.swift in Sources */,
 				533381E72BFF242E005C3C5E /* ThirdTableViewController.swift in Sources */,
