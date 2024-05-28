@@ -122,10 +122,12 @@ class CityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "인기 도시"
+        
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UINib(nibName: "CityTableViewCell", bundle: nil), forCellReuseIdentifier: "CityTableViewCell")
-        tableView.register(UINib(nibName: "AdTableViewCell", bundle: nil), forCellReuseIdentifier: "AdTableViewCell")
+        tableView.register(UINib(nibName: "CityTableViewCell", bundle: nil), forCellReuseIdentifier: CityTableViewCell.identifier)
+        tableView.register(UINib(nibName: "AdTableViewCell", bundle: nil), forCellReuseIdentifier: AdTableViewCell.identifier)
     }
     
 
@@ -139,7 +141,7 @@ extension CityViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if travel[indexPath.row].ad {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as? AdTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AdTableViewCell.identifier, for: indexPath) as? AdTableViewCell else {
                 return UITableViewCell()
             }
             
@@ -147,7 +149,7 @@ extension CityViewController: UITableViewDataSource {
             
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityTableViewCell", for: indexPath) as? CityTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CityTableViewCell.identifier, for: indexPath) as? CityTableViewCell else {
                 return UITableViewCell()
             }
             

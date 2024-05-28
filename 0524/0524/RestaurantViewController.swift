@@ -1,8 +1,8 @@
 //
-//  RestaurantTableViewController.swift
+//  RestaurantViewController.swift
 //  0524
 //
-//  Created by 김수경 on 5/24/24.
+//  Created by 김수경 on 5/28/24.
 //
 
 import UIKit
@@ -20,7 +20,7 @@ struct Restaurant {
 }
 
 struct RestaurantList {
-    let restaurantArray: [Restaurant] = [
+    static let restaurantArray: [Restaurant] = [
         Restaurant(
             image: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20170712_44%2F1499829806371zeBdS_JPEG%2FIMG_1167.jpg",
             latitude: 37.514746,
@@ -201,49 +201,98 @@ struct RestaurantList {
     ]
 }
 
-final class RestaurantTableViewController: UITableViewController {
-    
+final class RestaurantViewController: UIViewController {
     
     @IBOutlet var searchView: UIView!
-    @IBOutlet var searchOptionButton: UIButton!
+    
+    @IBOutlet var searchOptionSegmentedControl: UISegmentedControl!
+    
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var searchButton: UIButton!
     
+    @IBOutlet var restaurantTableView: UITableView!
+    
+    private var restaurantList = RestaurantList.restaurantArray
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
+        configureTableView()
     }
     
     private func setUI() {
-        searchView.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        
+        searchView.backgroundColor = .lightGray
         searchView.layer.cornerRadius = 10
         
-        searchOptionButton.menu = UIMenu(title: "이름")
-        
-        
-        searchTextField.backgroundColor = .white
+        searchTextField.backgroundColor = .lightGray
         searchTextField.layer.cornerRadius = 10
+        searchTextField.placeholder = "음식점 이름을 검색해보세용~"
+        searchTextField.borderStyle = .none
         
         searchButton.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        searchButton.tintColor = .lightGray.withAlphaComponent(0.1)
-        searchButton.backgroundColor = .white
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        searchButton.backgroundColor = .lightGray
+        searchButton.tintColor = .white
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell", for: indexPath) as? RestaurantTableViewCell else {
+        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        
+    }
+    
+    private func configureTableView() {
+        restaurantTableView.delegate = self
+        restaurantTableView.dataSource = self
+        restaurantTableView.register(UINib(nibName: "RestaurantTableViewCell", bundle: nil), forCellReuseIdentifier: RestaurantTableViewCell.identifier)
+    }
+    
+    @objc func searchButtonTapped() {
+        var result = [Restaurant]()
+        if let search = searchTextField.text,
+            search != "" {
+            if searchOptionSegmentedControl.selectedSegmentIndex == 0 {
+                for restaurant in RestaurantList.restaurantArray {
+                    if restaurant.name.contains(search) {
+                        result.append(restaurant)
+                        continue
+                    }
+                }
+            } else {
+                for restaurant in RestaurantList.restaurantArray {
+                    if restaurant.category.contains(search) {
+                        result.append(restaurant)
+                        continue
+                    }
+                }
+            }
+            restaurantList = result
+        } else if searchTextField.text == "" {
+            restaurantList = RestaurantList.restaurantArray
+        }
+        
+        restaurantTableView.reloadData()
+    }
+    
+    
+}
+
+extension RestaurantViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        restaurantList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.identifier, for: indexPath) as? RestaurantTableViewCell else {
             return UITableViewCell()
         }
         
-        
+        cell.setContext(restaurantList[indexPath.row])
         
         return cell
     }
     
+
+   
+
 }
+

@@ -9,16 +9,17 @@ import UIKit
 import Kingfisher
 
 class CityTableViewCell: UITableViewCell {
-
+    
+    static let identifier = "CityTableViewCell"
+    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
-
+    
     @IBOutlet var likeCountLabel: UILabel!
     @IBOutlet var saveCountLabel: UILabel!
     
     @IBOutlet var cityImageView: UIImageView!
     @IBOutlet var heartButton: UIButton!
-    
     
     @IBOutlet var starImageView: [UIImageView]!
     
@@ -41,8 +42,12 @@ class CityTableViewCell: UITableViewCell {
         saveCountLabel.textColor = .lightGray
         
         starImageView = starImageView.sorted { $0.tag < $1.tag }
+        for star in starImageView {
+            star.tintColor = .gray
+        }
+        heartButton.tintColor = .red
     }
-
+    
     func setContext(_ data: Travel) {
         titleLabel.text = data.title
         descriptionLabel.text = data.description
@@ -50,15 +55,12 @@ class CityTableViewCell: UITableViewCell {
             likeCountLabel.text = "(\(grade))"
             for index in 0..<Int(grade) {
                 starImageView[index].image = UIImage(systemName: "star.fill")
-            }
-            if grade < 4 {
-                for index in Int(grade)..<5 {
-                    starImageView[index].image = UIImage(systemName: "star")
-                }
+                starImageView[index].tintColor = .systemYellow
             }
         }
+        
         if let save = data.save {
-            saveCountLabel.text = "저장 \(save)"
+            saveCountLabel.text = "저장 \(save.formatted())"
         }
         
         if let like = data.like, like {
@@ -74,6 +76,10 @@ class CityTableViewCell: UITableViewCell {
         
         cityImageView.contentMode = .scaleAspectFill
     }
-
     
+    override func prepareForReuse() {
+        for star in starImageView {
+            star.tintColor = .gray
+        }
+    }
 }
