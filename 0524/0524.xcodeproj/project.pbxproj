@@ -80,25 +80,49 @@
 		530E341E2C00795B008B84DF /* 0524 */ = {
 			isa = PBXGroup;
 			children = (
+				5346E4ED2C0713A700FFC06E /* Restaurant */,
+				5346E4EC2C07139E00FFC06E /* City */,
+				5346E4EB2C07139200FFC06E /* Magazine */,
 				530E341F2C00795B008B84DF /* AppDelegate.swift */,
 				530E34212C00795B008B84DF /* SceneDelegate.swift */,
 				530E34232C00795B008B84DF /* ViewController.swift */,
-				530E34332C0079C8008B84DF /* MagazineInfoTableViewController.swift */,
-				530E34352C0079E7008B84DF /* MagazineInfoTableViewCell.swift */,
 				530E34252C00795B008B84DF /* Main.storyboard */,
 				530E34282C00795D008B84DF /* Assets.xcassets */,
 				530E342A2C00795D008B84DF /* LaunchScreen.storyboard */,
 				530E342D2C00795D008B84DF /* Info.plist */,
+			);
+			path = 0524;
+			sourceTree = "<group>";
+		};
+		5346E4EB2C07139200FFC06E /* Magazine */ = {
+			isa = PBXGroup;
+			children = (
+				530E34332C0079C8008B84DF /* MagazineInfoTableViewController.swift */,
+				530E34352C0079E7008B84DF /* MagazineInfoTableViewCell.swift */,
+			);
+			path = Magazine;
+			sourceTree = "<group>";
+		};
+		5346E4EC2C07139E00FFC06E /* City */ = {
+			isa = PBXGroup;
+			children = (
 				53BF830C2C04EF0E00EF0F10 /* CityViewController.swift */,
 				53BF830E2C04EFCD00EF0F10 /* CityTableViewCell.swift */,
 				53BF830F2C04EFCD00EF0F10 /* CityTableViewCell.xib */,
 				5365089A2C04FCB700218E11 /* AdTableViewCell.swift */,
 				5365089B2C04FCB700218E11 /* AdTableViewCell.xib */,
+			);
+			path = City;
+			sourceTree = "<group>";
+		};
+		5346E4ED2C0713A700FFC06E /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
 				537B66A42C05C4A90055649C /* RestaurantViewController.swift */,
 				537B66A62C05C54A0055649C /* RestaurantTableViewCell.swift */,
 				537B66A72C05C54A0055649C /* RestaurantTableViewCell.xib */,
 			);
-			path = 0524;
+			path = Restaurant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
