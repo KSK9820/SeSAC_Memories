@@ -158,11 +158,28 @@ extension CityViewController: UITableViewDataSource {
             return cell
         }
     }
+    
+  
 }
 
 extension CityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return travel[indexPath.row].ad ? 80 : 200
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if travel[indexPath.row].ad {
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "AdViewController") as? AdViewController else { return }
+            
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            
+            present(nav, animated: true)
+        } else {
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "SightViewController") as? SightViewController else { return }
+        
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
