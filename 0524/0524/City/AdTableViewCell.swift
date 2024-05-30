@@ -40,4 +40,6 @@ class AdTableViewCell: UITableViewCell {
         titleLabel.text = data.title
     }
     
+
+    
 }

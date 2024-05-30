@@ -170,6 +170,8 @@ extension CityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if travel[indexPath.row].ad {
             guard let vc = storyboard?.instantiateViewController(withIdentifier: "AdViewController") as? AdViewController else { return }
+        
+            vc.contents = travel[indexPath.row]
             
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen
@@ -177,7 +179,8 @@ extension CityViewController: UITableViewDelegate {
             present(nav, animated: true)
         } else {
             guard let vc = storyboard?.instantiateViewController(withIdentifier: "SightViewController") as? SightViewController else { return }
-        
+            
+            vc.contents = travel[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
         }
     }
