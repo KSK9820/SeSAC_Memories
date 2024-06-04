@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         
         button.setTitle("go to signIn", for: .normal)
         button.backgroundColor = .blue
+        button.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -57,6 +58,14 @@ class ViewController: UIViewController {
     
     @objc func netflixButtonTapped() {
         let vc = NetflixViewController()
+        
+        vc.modalPresentationStyle = .fullScreen
+        
+        present(vc, animated: true)
+    }
+    
+    @objc func signInButtonTapped() {
+        let vc = SignInViewController()
         
         vc.modalPresentationStyle = .fullScreen
         

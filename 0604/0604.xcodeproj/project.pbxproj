@@ -16,6 +16,7 @@
 		538FAAE02C0F369F00950538 /* NetflixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FAADF2C0F369F00950538 /* NetflixViewController.swift */; };
 		538FAAE32C0F375A00950538 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 538FAAE22C0F375A00950538 /* SnapKit */; };
 		538FAAE52C0F70B400950538 /* SmallPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FAAE42C0F70B400950538 /* SmallPoster.swift */; };
+		538FAAE82C0F76DD00950538 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FAAE72C0F76DD00950538 /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		538FAAD82C0F35A800950538 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		538FAADF2C0F369F00950538 /* NetflixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixViewController.swift; sourceTree = "<group>"; };
 		538FAAE42C0F70B400950538 /* SmallPoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallPoster.swift; sourceTree = "<group>"; };
+		538FAAE72C0F76DD00950538 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		538FAAC92C0F35A600950538 /* 0604 */ = {
 			isa = PBXGroup;
 			children = (
+				538FAAE62C0F76D000950538 /* SignIn */,
 				538FAADE2C0F369000950538 /* Netflix */,
 				538FAACA2C0F35A600950538 /* AppDelegate.swift */,
 				538FAACC2C0F35A600950538 /* SceneDelegate.swift */,
@@ -81,6 +84,14 @@
 				538FAAE42C0F70B400950538 /* SmallPoster.swift */,
 			);
 			path = Netflix;
+			sourceTree = "<group>";
+		};
+		538FAAE62C0F76D000950538 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				538FAAE72C0F76DD00950538 /* SignInViewController.swift */,
+			);
+			path = SignIn;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +173,7 @@
 			files = (
 				538FAACF2C0F35A600950538 /* ViewController.swift in Sources */,
 				538FAACB2C0F35A600950538 /* AppDelegate.swift in Sources */,
+				538FAAE82C0F76DD00950538 /* SignInViewController.swift in Sources */,
 				538FAAE52C0F70B400950538 /* SmallPoster.swift in Sources */,
 				538FAACD2C0F35A600950538 /* SceneDelegate.swift in Sources */,
 				538FAAE02C0F369F00950538 /* NetflixViewController.swift in Sources */,
