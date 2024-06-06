@@ -14,6 +14,12 @@
 		532660A92C107D7900011E3B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 532660A82C107D7900011E3B /* SnapKit */; };
 		532660AC2C1187B700011E3B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 532660AB2C1187B700011E3B /* Alamofire */; };
 		532660AE2C118E9E00011E3B /* LottoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532660AD2C118E9E00011E3B /* LottoModel.swift */; };
+		532660B12C11947500011E3B /* MovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532660B02C11947500011E3B /* MovieController.swift */; };
+		532660B32C11954B00011E3B /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532660B22C11954B00011E3B /* APIKey.swift */; };
+		532660B52C1196F500011E3B /* MovieResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532660B42C1196F500011E3B /* MovieResponseModel.swift */; };
+		532660B92C11A3FC00011E3B /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532660B82C11A3FC00011E3B /* MovieTableViewCell.swift */; };
+		532660BB2C11A43500011E3B /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532660BA2C11A43500011E3B /* ReuseIdentifiable.swift */; };
+		532660BD2C12116C00011E3B /* MovieRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532660BC2C12116C00011E3B /* MovieRequestModel.swift */; };
 		538FAACB2C0F35A600950538 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FAACA2C0F35A600950538 /* AppDelegate.swift */; };
 		538FAACD2C0F35A600950538 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FAACC2C0F35A600950538 /* SceneDelegate.swift */; };
 		538FAACF2C0F35A600950538 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FAACE2C0F35A600950538 /* ViewController.swift */; };
@@ -30,6 +36,12 @@
 		532660A32C10731B00011E3B /* LottoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoViewController.swift; sourceTree = "<group>"; };
 		532660A52C10784200011E3B /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		532660AD2C118E9E00011E3B /* LottoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoModel.swift; sourceTree = "<group>"; };
+		532660B02C11947500011E3B /* MovieController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieController.swift; sourceTree = "<group>"; };
+		532660B22C11954B00011E3B /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		532660B42C1196F500011E3B /* MovieResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponseModel.swift; sourceTree = "<group>"; };
+		532660B82C11A3FC00011E3B /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		532660BA2C11A43500011E3B /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
+		532660BC2C12116C00011E3B /* MovieRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRequestModel.swift; sourceTree = "<group>"; };
 		538FAAC72C0F35A600950538 /* 0604.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 0604.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		538FAACA2C0F35A600950538 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		538FAACC2C0F35A600950538 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +77,17 @@
 			path = Lotto;
 			sourceTree = "<group>";
 		};
+		532660AF2C11946300011E3B /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				532660B02C11947500011E3B /* MovieController.swift */,
+				532660B42C1196F500011E3B /* MovieResponseModel.swift */,
+				532660B82C11A3FC00011E3B /* MovieTableViewCell.swift */,
+				532660BC2C12116C00011E3B /* MovieRequestModel.swift */,
+			);
+			path = Movie;
+			sourceTree = "<group>";
+		};
 		538FAABE2C0F35A600950538 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +108,7 @@
 		538FAAC92C0F35A600950538 /* 0604 */ = {
 			isa = PBXGroup;
 			children = (
+				532660AF2C11946300011E3B /* Movie */,
 				532660A22C10731300011E3B /* Lotto */,
 				538FAAE62C0F76D000950538 /* SignIn */,
 				538FAADE2C0F369000950538 /* Netflix */,
@@ -95,6 +119,8 @@
 				538FAAD52C0F35A800950538 /* LaunchScreen.storyboard */,
 				538FAAD82C0F35A800950538 /* Info.plist */,
 				532660A02C10713200011E3B /* APIURL.swift */,
+				532660B22C11954B00011E3B /* APIKey.swift */,
+				532660BA2C11A43500011E3B /* ReuseIdentifiable.swift */,
 			);
 			path = 0604;
 			sourceTree = "<group>";
@@ -195,15 +221,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				532660BD2C12116C00011E3B /* MovieRequestModel.swift in Sources */,
 				538FAACF2C0F35A600950538 /* ViewController.swift in Sources */,
+				532660BB2C11A43500011E3B /* ReuseIdentifiable.swift in Sources */,
 				538FAACB2C0F35A600950538 /* AppDelegate.swift in Sources */,
+				532660B92C11A3FC00011E3B /* MovieTableViewCell.swift in Sources */,
+				532660B12C11947500011E3B /* MovieController.swift in Sources */,
 				532660AE2C118E9E00011E3B /* LottoModel.swift in Sources */,
 				538FAAE82C0F76DD00950538 /* SignInViewController.swift in Sources */,
 				538FAAE52C0F70B400950538 /* SmallPoster.swift in Sources */,
+				532660B52C1196F500011E3B /* MovieResponseModel.swift in Sources */,
 				538FAACD2C0F35A600950538 /* SceneDelegate.swift in Sources */,
 				532660A42C10731B00011E3B /* LottoViewController.swift in Sources */,
 				538FAAE02C0F369F00950538 /* NetflixViewController.swift in Sources */,
 				532660A12C10713200011E3B /* APIURL.swift in Sources */,
+				532660B32C11954B00011E3B /* APIKey.swift in Sources */,
 				532660A62C10784200011E3B /* InsetLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
