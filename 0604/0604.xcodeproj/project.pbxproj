@@ -32,6 +32,10 @@
 		538FAAE02C0F369F00950538 /* NetflixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FAADF2C0F369F00950538 /* NetflixViewController.swift */; };
 		538FAAE52C0F70B400950538 /* SmallPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FAAE42C0F70B400950538 /* SmallPoster.swift */; };
 		538FAAE82C0F76DD00950538 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FAAE72C0F76DD00950538 /* SignInViewController.swift */; };
+		53BC90D72C170E2A0033B486 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BC90D62C170E2A0033B486 /* TrendViewController.swift */; };
+		53BC90D92C1710F40033B486 /* trendType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BC90D82C1710F40033B486 /* trendType.swift */; };
+		53BC90DB2C1712AD0033B486 /* TrendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BC90DA2C1712AD0033B486 /* TrendResponse.swift */; };
+		53BC90DD2C171BEF0033B486 /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BC90DC2C171BEF0033B486 /* TrendTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +63,10 @@
 		538FAADF2C0F369F00950538 /* NetflixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixViewController.swift; sourceTree = "<group>"; };
 		538FAAE42C0F70B400950538 /* SmallPoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallPoster.swift; sourceTree = "<group>"; };
 		538FAAE72C0F76DD00950538 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		53BC90D62C170E2A0033B486 /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
+		53BC90D82C1710F40033B486 /* trendType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trendType.swift; sourceTree = "<group>"; };
+		53BC90DA2C1712AD0033B486 /* TrendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendResponse.swift; sourceTree = "<group>"; };
+		53BC90DC2C171BEF0033B486 /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +134,7 @@
 		538FAAC92C0F35A600950538 /* 0604 */ = {
 			isa = PBXGroup;
 			children = (
+				53BC90D52C170E050033B486 /* TMDB */,
 				532660BE2C12325200011E3B /* Weather */,
 				532660AF2C11946300011E3B /* Movie */,
 				532660A22C10731300011E3B /* Lotto */,
@@ -159,6 +168,17 @@
 				538FAAE72C0F76DD00950538 /* SignInViewController.swift */,
 			);
 			path = SignIn;
+			sourceTree = "<group>";
+		};
+		53BC90D52C170E050033B486 /* TMDB */ = {
+			isa = PBXGroup;
+			children = (
+				53BC90D62C170E2A0033B486 /* TrendViewController.swift */,
+				53BC90D82C1710F40033B486 /* trendType.swift */,
+				53BC90DA2C1712AD0033B486 /* TrendResponse.swift */,
+				53BC90DC2C171BEF0033B486 /* TrendTableViewCell.swift */,
+			);
+			path = TMDB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,14 +270,18 @@
 				532660BB2C11A43500011E3B /* ReuseIdentifiable.swift in Sources */,
 				538FAACB2C0F35A600950538 /* AppDelegate.swift in Sources */,
 				532660B92C11A3FC00011E3B /* MovieTableViewCell.swift in Sources */,
+				53BC90D72C170E2A0033B486 /* TrendViewController.swift in Sources */,
+				53BC90DD2C171BEF0033B486 /* TrendTableViewCell.swift in Sources */,
 				532660B12C11947500011E3B /* MovieController.swift in Sources */,
 				532660AE2C118E9E00011E3B /* LottoModel.swift in Sources */,
 				538FAAE82C0F76DD00950538 /* SignInViewController.swift in Sources */,
+				53BC90DB2C1712AD0033B486 /* TrendResponse.swift in Sources */,
 				538FAAE52C0F70B400950538 /* SmallPoster.swift in Sources */,
 				532660B52C1196F500011E3B /* MovieResponseModel.swift in Sources */,
 				538FAACD2C0F35A600950538 /* SceneDelegate.swift in Sources */,
 				532660A42C10731B00011E3B /* LottoViewController.swift in Sources */,
 				538FAAE02C0F369F00950538 /* NetflixViewController.swift in Sources */,
+				53BC90D92C1710F40033B486 /* trendType.swift in Sources */,
 				532660A12C10713200011E3B /* APIURL.swift in Sources */,
 				532660B32C11954B00011E3B /* APIKey.swift in Sources */,
 				532660A62C10784200011E3B /* InsetLabel.swift in Sources */,
