@@ -8,7 +8,9 @@
 import Foundation
 
 struct TrendResponse: Decodable {
-    let results: [Result]
+    var page: Int
+    var results: [Result]
+    let total_pages: Int
 }
 
 struct Result: Codable {
@@ -16,9 +18,10 @@ struct Result: Codable {
     let originalTitle: String?
     let overview: String
     let posterPath: String?
-    let mediaType: String
+    let mediaType: String?
     let releaseDate: String?
     let voteAverage: Double
+    let backdropPath: String?
 
     enum CodingKeys: String, CodingKey {
         case id, overview
@@ -27,5 +30,6 @@ struct Result: Codable {
         case mediaType = "media_type"
         case releaseDate = "release_date"
         case voteAverage = "vote_average"
+        case backdropPath = "backdrop_path"
     }
 }
