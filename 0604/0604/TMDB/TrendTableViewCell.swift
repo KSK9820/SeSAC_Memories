@@ -36,7 +36,6 @@ final class TrendTableViewCell: UITableViewCell {
         view.layer.shadowColor = UIColor.gray.cgColor
         view.layer.shadowOpacity = 0.7
         view.layer.shadowOffset = CGSize(width: 4, height: 4)
-//        view.layer.shadowPath = nil
         
         return view
     }()
@@ -130,6 +129,7 @@ final class TrendTableViewCell: UITableViewCell {
         configureHierarchy()
         configureLayout()
         configureUI()
+        selectionStyle = .none
     }
     
     required init?(coder: NSCoder) {
@@ -165,7 +165,6 @@ final class TrendTableViewCell: UITableViewCell {
         }
         view.snp.makeConstraints { make in
             make.top.equalTo(typeLabel.snp.bottom).offset(10)
-//            make.horizontalEdges.equalToSuperview().inset(10)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.9)
             make.height.equalTo(view.snp.width)
@@ -209,9 +208,10 @@ final class TrendTableViewCell: UITableViewCell {
         posterImage.layer.cornerRadius = 8
     }
     
+
     func setContents(_ data: Result) {
         dateLabel.text = data.releaseDate
-        typeLabel.text = "#" + data.mediaType
+        typeLabel.text = data.mediaType
         
         if let posterPath = data.posterPath {
             let url = URL(string: APIURL.tmdbPosterPath(posterPath).urlString)

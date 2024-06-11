@@ -32,10 +32,17 @@
 		538FAAE02C0F369F00950538 /* NetflixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FAADF2C0F369F00950538 /* NetflixViewController.swift */; };
 		538FAAE52C0F70B400950538 /* SmallPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FAAE42C0F70B400950538 /* SmallPoster.swift */; };
 		538FAAE82C0F76DD00950538 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FAAE72C0F76DD00950538 /* SignInViewController.swift */; };
+		5390BD0D2C17F6D000E73533 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5390BD0C2C17F6D000E73533 /* CreditViewController.swift */; };
+		5390BD0F2C17F75B00E73533 /* CreditType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5390BD0E2C17F75B00E73533 /* CreditType.swift */; };
+		5390BD112C17FFEC00E73533 /* CreditHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5390BD102C17FFEC00E73533 /* CreditHeaderView.swift */; };
+		5390BD172C18348300E73533 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5390BD162C18348300E73533 /* SearchViewController.swift */; };
+		5390BD192C1836A100E73533 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5390BD182C1836A100E73533 /* SearchCollectionViewCell.swift */; };
 		53BC90D72C170E2A0033B486 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BC90D62C170E2A0033B486 /* TrendViewController.swift */; };
 		53BC90D92C1710F40033B486 /* trendType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BC90D82C1710F40033B486 /* trendType.swift */; };
 		53BC90DB2C1712AD0033B486 /* TrendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BC90DA2C1712AD0033B486 /* TrendResponse.swift */; };
 		53BC90DD2C171BEF0033B486 /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BC90DC2C171BEF0033B486 /* TrendTableViewCell.swift */; };
+		53F7EFF02C18AB9500FC050C /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F7EFEF2C18AB9500FC050C /* OverviewTableViewCell.swift */; };
+		53F7EFF22C18B11700FC050C /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F7EFF12C18B11700FC050C /* CastTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,10 +70,17 @@
 		538FAADF2C0F369F00950538 /* NetflixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixViewController.swift; sourceTree = "<group>"; };
 		538FAAE42C0F70B400950538 /* SmallPoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallPoster.swift; sourceTree = "<group>"; };
 		538FAAE72C0F76DD00950538 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		5390BD0C2C17F6D000E73533 /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
+		5390BD0E2C17F75B00E73533 /* CreditType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditType.swift; sourceTree = "<group>"; };
+		5390BD102C17FFEC00E73533 /* CreditHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditHeaderView.swift; sourceTree = "<group>"; };
+		5390BD162C18348300E73533 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		5390BD182C1836A100E73533 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		53BC90D62C170E2A0033B486 /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		53BC90D82C1710F40033B486 /* trendType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trendType.swift; sourceTree = "<group>"; };
 		53BC90DA2C1712AD0033B486 /* TrendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendResponse.swift; sourceTree = "<group>"; };
 		53BC90DC2C171BEF0033B486 /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
+		53F7EFEF2C18AB9500FC050C /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
+		53F7EFF12C18B11700FC050C /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +191,13 @@
 				53BC90D82C1710F40033B486 /* trendType.swift */,
 				53BC90DA2C1712AD0033B486 /* TrendResponse.swift */,
 				53BC90DC2C171BEF0033B486 /* TrendTableViewCell.swift */,
+				5390BD0C2C17F6D000E73533 /* CreditViewController.swift */,
+				5390BD0E2C17F75B00E73533 /* CreditType.swift */,
+				5390BD102C17FFEC00E73533 /* CreditHeaderView.swift */,
+				5390BD162C18348300E73533 /* SearchViewController.swift */,
+				5390BD182C1836A100E73533 /* SearchCollectionViewCell.swift */,
+				53F7EFEF2C18AB9500FC050C /* OverviewTableViewCell.swift */,
+				53F7EFF12C18B11700FC050C /* CastTableViewCell.swift */,
 			);
 			path = TMDB;
 			sourceTree = "<group>";
@@ -265,6 +286,7 @@
 				532660BD2C12116C00011E3B /* MovieRequestModel.swift in Sources */,
 				532660C22C1232A700011E3B /* WeatherResponseModel.swift in Sources */,
 				532660C02C12325C00011E3B /* WeatherViewController.swift in Sources */,
+				5390BD172C18348300E73533 /* SearchViewController.swift in Sources */,
 				538FAACF2C0F35A600950538 /* ViewController.swift in Sources */,
 				532660C42C1235C400011E3B /* WeatherRequestModel.swift in Sources */,
 				532660BB2C11A43500011E3B /* ReuseIdentifiable.swift in Sources */,
@@ -279,12 +301,18 @@
 				538FAAE52C0F70B400950538 /* SmallPoster.swift in Sources */,
 				532660B52C1196F500011E3B /* MovieResponseModel.swift in Sources */,
 				538FAACD2C0F35A600950538 /* SceneDelegate.swift in Sources */,
+				5390BD0F2C17F75B00E73533 /* CreditType.swift in Sources */,
 				532660A42C10731B00011E3B /* LottoViewController.swift in Sources */,
 				538FAAE02C0F369F00950538 /* NetflixViewController.swift in Sources */,
+				53F7EFF02C18AB9500FC050C /* OverviewTableViewCell.swift in Sources */,
+				5390BD112C17FFEC00E73533 /* CreditHeaderView.swift in Sources */,
 				53BC90D92C1710F40033B486 /* trendType.swift in Sources */,
 				532660A12C10713200011E3B /* APIURL.swift in Sources */,
 				532660B32C11954B00011E3B /* APIKey.swift in Sources */,
+				53F7EFF22C18B11700FC050C /* CastTableViewCell.swift in Sources */,
 				532660A62C10784200011E3B /* InsetLabel.swift in Sources */,
+				5390BD192C1836A100E73533 /* SearchCollectionViewCell.swift in Sources */,
+				5390BD0D2C17F6D000E73533 /* CreditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

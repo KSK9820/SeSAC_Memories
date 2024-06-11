@@ -94,4 +94,10 @@ extension TrendViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         view.layer.frame.width + 50
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let data = trendData?.results[indexPath.row] else { return }
+        let vc = CreditViewController(trendData: data)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
