@@ -13,10 +13,14 @@ final class CreditViewController: UIViewController {
     
     let trendData: Result
     var castData: CreditType?
+    var similarData: TrendResponse?
+    var recommendData: TrendResponse?
 
     private let tableView = UITableView()
+
     
     let tableViewSectionTitle: [String] = ["OverView", "Cast"]
+    let collectionViewSectionTitle = ["비슷한 영화, 드라마", "추천 영화, 드라마"]
     
     // MARK: - Initialize
     
@@ -32,11 +36,25 @@ final class CreditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
-        getData()
         configureHierarchy()
         configureLayout()
         configureUI()
+        
+        
+        TMDBNetworkManager.shared.getData(url: .tmdbCredit("\(trendData.id)"), reponseType: CreditType.self) { response in
+            self.castData = response
+            self.tableView.reloadSections(IndexSet(0...1), with: .automatic)
+        }
+        TMDBNetworkManager.shared.getData(url: .tmdbSimilar("\(trendData.id)"), reponseType: TrendResponse.self) { response in
+            self.similarData = response
+            self.tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
+        }
+        TMDBNetworkManager.shared.getData(url: .tmdbRecommend("\(trendData.id)"), reponseType: TrendResponse.self) { response in
+            self.recommendData = response
+            self.tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
+        }
     }
     
     
@@ -66,48 +84,51 @@ final class CreditViewController: UIViewController {
     
         tableView.register(OverviewTableViewCell.self, forCellReuseIdentifier: OverviewTableViewCell.identifier)
         tableView.register(CastTableViewCell.self, forCellReuseIdentifier: CastTableViewCell.identifier)
+        tableView.register(AdditionalMovieImageTableViewCell.self, forCellReuseIdentifier: AdditionalMovieImageTableViewCell.identifier)
     }
     
-    
-    private func getData() {
-        let url = APIURL.tmdbCredit("\(trendData.id)").urlString
-        let header: HTTPHeaders = [
-            "Authorization" : APIKey.tmdb.apikey,
-            "access" : "application/json"
-        ]
-        
-        AF.request(url, headers: header).responseDecodable(of: CreditType.self) { response in
-            switch response.result {
-            case .success(let data):
-                self.castData = data
-                self.tableView.reloadData()
-            case .failure(let error):
-                print(error)
-            }
-        }
-    
-    }
 }
 
 extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        tableViewSectionTitle.count
+        tableViewSectionTitle.count + collectionViewSectionTitle.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return tableViewSectionTitle[section]
+        switch section {
+        case 0,1:
+            return tableViewSectionTitle[section]
+        case 2,3:
+            return collectionViewSectionTitle[section - 2]
+        default:
+            return nil
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        switch section {
+        case 0:
             return 1
-        } else {
+        case 1:
             if let castData, let cast = castData.cast {
                 return cast.count
             }
+            return 0
+        case 2:
+            if let similarData {
+                return 1
+            }
+            return 0
+        case 3:
+            if let recommendData {
+                return 1
+            }
+            return 0
+        default:
+            return 0
         }
-        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -116,7 +137,7 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
             cell.setContents(trendData.overview)
             
             return cell
-        } else {
+        } else if indexPath.section == 1{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CastTableViewCell.identifier, for: indexPath) as? CastTableViewCell else { return UITableViewCell() }
             if let castData,
                let cast = castData.cast {
@@ -124,9 +145,33 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             return cell
+        } else if indexPath.section == 2 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AdditionalMovieImageTableViewCell.identifier, for: indexPath) as? AdditionalMovieImageTableViewCell else { return UITableViewCell() }
+            
+            if let similarData {
+                cell.data = similarData
+            }
+            
+            return cell
+        } else if indexPath.section == 3 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AdditionalMovieImageTableViewCell.identifier, for: indexPath) as? AdditionalMovieImageTableViewCell else { return UITableViewCell() }
+            
+            if let recommendData {
+                cell.data = recommendData
+            }
+            
+            return cell
+        }
+        
+        return UITableViewCell()
+    }
+  
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let tableViewCell = cell as? AdditionalMovieImageTableViewCell {
+            tableViewCell.reloadCollectionView()
         }
     }
-
+    
     
 }
-
