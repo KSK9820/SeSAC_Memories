@@ -92,7 +92,12 @@ final class LottoViewController: UIViewController {
         
         configureHierarchy()
         configureLayout()
-        getLotto("986")
+        NetworkManager.shared.getLotto("986") { data, numbers in
+            self.configureLottoUI(numbers)
+            self.textField.text = "\(data.drwNo)"
+            self.setTitleLabel()
+            self.dateLabel.text = data.drwNoDate
+        }
         configurePikcer()
         
     }
@@ -212,26 +217,6 @@ final class LottoViewController: UIViewController {
     
     
     
-    // MARK: - network
-    
-    private func getLotto(_ count: String) {
-        guard let url = URL(string: APIURL.lottery(count).urlString) else { return }
-        
-        AF.request(url).responseDecodable(of: LottoModel.self) { response in
-            switch response.result {
-            case .success(let data):
-                var selectedNumbers = [data.drwtNo1, data.drwtNo2, data.drwtNo3, data.drwtNo4, data.drwtNo5, data.drwtNo6, data.bnusNo].map { String($0) }
-                selectedNumbers.insert("+", at: 6)
-                self.configureLottoUI(selectedNumbers)
-                self.textField.text = "\(data.drwNo)"
-                self.setTitleLabel()
-                self.dateLabel.text = data.drwNoDate
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
 }
 
 
@@ -249,7 +234,12 @@ extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        getLotto("\(pickerView.numberOfRows(inComponent: 0) - row)")
+        NetworkManager.shared.getLotto("\(pickerView.numberOfRows(inComponent: 0) - row)") { data, numbers in
+            self.configureLottoUI(numbers)
+            self.textField.text = "\(data.drwNo)"
+            self.setTitleLabel()
+            self.dateLabel.text = data.drwNoDate
+        }
     }
     
 }
