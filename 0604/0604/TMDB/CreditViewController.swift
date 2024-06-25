@@ -15,12 +15,10 @@ final class CreditViewController: UIViewController {
     var castData: CreditType?
     var similarData: TrendResponse?
     var recommendData: TrendResponse?
-
+    let tableViewSectionTitle: [String] = ["OverView", "Cast", "비슷한 영화, 드라마", "추천 영화, 드라마"]
+    
     private let tableView = UITableView()
 
-    
-    let tableViewSectionTitle: [String] = ["OverView", "Cast"]
-    let collectionViewSectionTitle = ["비슷한 영화, 드라마", "추천 영화, 드라마"]
     
     // MARK: - Initialize
     
@@ -36,25 +34,44 @@ final class CreditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         configureHierarchy()
         configureLayout()
         configureUI()
         
+        let group = DispatchGroup()
         
-        TMDBNetworkManager.shared.getData(url: .tmdbCredit("\(trendData.id)"), reponseType: CreditType.self) { response in
-            self.castData = response
-            self.tableView.reloadSections(IndexSet(0...1), with: .automatic)
+        group.enter()
+        DispatchQueue.global().async(group: group) { [weak self] in
+            guard let id = self?.trendData.id else { group.leave(); return }
+            TMDBNetworkManager.shared.getData(url: .tmdbCredit("\(id)"), reponseType: CreditType.self) { response in
+                self?.castData = response
+                group.leave()
+            }
         }
-        TMDBNetworkManager.shared.getData(url: .tmdbSimilar("\(trendData.id)"), reponseType: TrendResponse.self) { response in
-            self.similarData = response
-            self.tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
+        
+        group.enter()
+        DispatchQueue.global().async(group: group) { [weak self] in
+            guard let id = self?.trendData.id else { group.leave(); return }
+            TMDBNetworkManager.shared.getData(url: .tmdbSimilar("\(id)"), reponseType: TrendResponse.self) { response in
+                self?.similarData = response
+                group.leave()
+            }
         }
-        TMDBNetworkManager.shared.getData(url: .tmdbRecommend("\(trendData.id)"), reponseType: TrendResponse.self) { response in
-            self.recommendData = response
-            self.tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
+        
+        group.enter()
+        DispatchQueue.global().async(group: group) { [weak self] in
+            guard let id = self?.trendData.id else { group.leave(); return }
+            TMDBNetworkManager.shared.getData(url: .tmdbRecommend("\(id)"), reponseType: TrendResponse.self) { response in
+                self?.recommendData = response
+                group.leave()
+            }
         }
+        
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
+        
     }
     
     
@@ -81,10 +98,11 @@ final class CreditViewController: UIViewController {
         let vc = CreditHeaderView(data: trendData)
         vc.frame = CGRect(x: 0, y: 0, width: view.layer.frame.width, height: view.layer.frame.height * 0.25)
         tableView.tableHeaderView = vc
-    
+        
         tableView.register(OverviewTableViewCell.self, forCellReuseIdentifier: OverviewTableViewCell.identifier)
         tableView.register(CastTableViewCell.self, forCellReuseIdentifier: CastTableViewCell.identifier)
         tableView.register(AdditionalMovieImageTableViewCell.self, forCellReuseIdentifier: AdditionalMovieImageTableViewCell.identifier)
+        
     }
     
 }
@@ -92,19 +110,11 @@ final class CreditViewController: UIViewController {
 extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        tableViewSectionTitle.count + collectionViewSectionTitle.count
+        tableViewSectionTitle.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0,1:
-            return tableViewSectionTitle[section]
-        case 2,3:
-            return collectionViewSectionTitle[section - 2]
-        default:
-            return nil
-        }
-        
+        return tableViewSectionTitle[section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -117,15 +127,9 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return 0
         case 2:
-            if let similarData {
-                return 1
-            }
-            return 0
+            return similarData != nil ? 1 : 0
         case 3:
-            if let recommendData {
-                return 1
-            }
-            return 0
+            return recommendData != nil ? 1 : 0
         default:
             return 0
         }
@@ -137,7 +141,9 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
             cell.setContents(trendData.overview)
             
             return cell
-        } else if indexPath.section == 1{
+        }
+        
+        if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CastTableViewCell.identifier, for: indexPath) as? CastTableViewCell else { return UITableViewCell() }
             if let castData,
                let cast = castData.cast {
@@ -145,33 +151,50 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             return cell
-        } else if indexPath.section == 2 {
+        }
+        
+        if indexPath.section == 2 || indexPath.section == 3 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: AdditionalMovieImageTableViewCell.identifier, for: indexPath) as? AdditionalMovieImageTableViewCell else { return UITableViewCell() }
             
-            if let similarData {
-                cell.data = similarData
-            }
-            
-            return cell
-        } else if indexPath.section == 3 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: AdditionalMovieImageTableViewCell.identifier, for: indexPath) as? AdditionalMovieImageTableViewCell else { return UITableViewCell() }
-            
-            if let recommendData {
-                cell.data = recommendData
-            }
+            cell.collectionView.dataSource = self
+            cell.collectionView.register(ContentImageCollectionViewCell.self, forCellWithReuseIdentifier: ContentImageCollectionViewCell.identifier)
+            cell.collectionView.tag = indexPath.section
+            cell.collectionView.reloadData()
             
             return cell
         }
         
         return UITableViewCell()
     }
-  
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let tableViewCell = cell as? AdditionalMovieImageTableViewCell {
-            tableViewCell.reloadCollectionView()
+
+}
+
+
+extension CreditViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch collectionView.tag {
+        case 2:
+            return similarData == nil ? 0 : similarData!.results.count
+        case 3:
+            return recommendData == nil ? 0 : recommendData!.results.count
+        default:
+            return 0
         }
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContentImageCollectionViewCell.identifier, for: indexPath) as? ContentImageCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        if collectionView.tag == 2 {
+            guard let similarData = similarData?.results else { return UICollectionViewCell() }
+            cell.setImage(similarData[indexPath.row])
+        } else if collectionView.tag == 3 {
+            guard let recommendData = recommendData?.results else { return UICollectionViewCell() }
+            cell.setImage(recommendData[indexPath.row])
+        }
+        
+        return cell
+    }
 }
