@@ -11,7 +11,7 @@ import Kingfisher
 
 final class CreditHeaderView: UIView {
     
-    let data: Result
+    let data: TrendResult
     
     private let backImage = UIImageView()
     private let posterImage = UIImageView()
@@ -25,7 +25,7 @@ final class CreditHeaderView: UIView {
     }()
     
     
-    init(data: Result) {
+    init(data: TrendResult) {
         self.data = data
         super.init(frame: .zero)
 

@@ -30,7 +30,7 @@ final class SearchCollectionViewCell: UICollectionViewCell {
     }
 
     
-    func setContents(_ data: Result) {
+    func setContents(_ data: TrendResult) {
         if let path = data.posterPath {
             let url = URL(string: APIURL.tmdbPosterPath(path).urlString)
                 imageView.kf.setImage(with: url)

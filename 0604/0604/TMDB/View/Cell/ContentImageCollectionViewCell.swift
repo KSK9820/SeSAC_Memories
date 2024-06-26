@@ -24,7 +24,7 @@ final class ContentImageCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setImage(_ data: Result) {
+    func setImage(_ data: TrendResult) {
         if let path = data.posterPath {
             let url = URL(string: APIURL.tmdbPosterPath(path).urlString)
             contentImageView.kf.setImage(with: url)

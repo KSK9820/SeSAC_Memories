@@ -209,7 +209,7 @@ final class TrendTableViewCell: UITableViewCell {
     }
     
 
-    func setContents(_ data: Result) {
+    func setContents(_ data: TrendResult) {
         dateLabel.text = data.releaseDate
         typeLabel.text = data.mediaType
         

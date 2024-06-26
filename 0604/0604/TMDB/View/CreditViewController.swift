@@ -11,7 +11,7 @@ import SnapKit
 
 final class CreditViewController: UIViewController {
     
-    let trendData: Result
+    let trendData: TrendResult
     var castData: CreditType?
     var similarData: TrendResponse?
     var recommendData: TrendResponse?
@@ -22,7 +22,7 @@ final class CreditViewController: UIViewController {
     
     // MARK: - Initialize
     
-    init(trendData: Result) {
+    init(trendData: TrendResult) {
         self.trendData = trendData
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,6 +38,11 @@ final class CreditViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
+        requestData()
+    }
+    
+    func requestData() {
+        var retry = false
         
         let group = DispatchGroup()
         
@@ -45,8 +50,14 @@ final class CreditViewController: UIViewController {
         DispatchQueue.global().async(group: group) { [weak self] in
             guard let id = self?.trendData.id else { group.leave(); return }
             TMDBNetworkManager.shared.getData(url: .tmdbCredit("\(id)"), reponseType: CreditType.self) { response in
-                self?.castData = response
-                group.leave()
+                switch response {
+                case .success(let data):
+                    self?.castData = data
+                    group.leave()
+                case.failure(let error):
+                    retry = true
+                    group.leave()
+                }
             }
         }
         
@@ -54,8 +65,14 @@ final class CreditViewController: UIViewController {
         DispatchQueue.global().async(group: group) { [weak self] in
             guard let id = self?.trendData.id else { group.leave(); return }
             TMDBNetworkManager.shared.getData(url: .tmdbSimilar("\(id)"), reponseType: TrendResponse.self) { response in
-                self?.similarData = response
-                group.leave()
+                switch response {
+                case .success(let data):
+                    self?.similarData = data
+                    group.leave()
+                case.failure(let error):
+                    retry = true
+                    group.leave()
+                }
             }
         }
         
@@ -63,15 +80,26 @@ final class CreditViewController: UIViewController {
         DispatchQueue.global().async(group: group) { [weak self] in
             guard let id = self?.trendData.id else { group.leave(); return }
             TMDBNetworkManager.shared.getData(url: .tmdbRecommend("\(id)"), reponseType: TrendResponse.self) { response in
-                self?.recommendData = response
-                group.leave()
+                switch response {
+                case .success(let data):
+                    self?.recommendData = data
+                    group.leave()
+                case.failure(let error):
+                    retry = true
+                    group.leave()
+                }
             }
         }
         
         group.notify(queue: .main) {
-            self.tableView.reloadData()
+            if retry == true {
+                self.showErrorAlert(title: "네트워크 오류", message: "이미지를 다운받지 못했습니다. 다시 시도하겠습니까?") {
+                    self.requestData()
+                }
+            } else {
+                self.tableView.reloadData()
+            }
         }
-        
     }
     
     
@@ -196,5 +224,20 @@ extension CreditViewController: UICollectionViewDataSource {
         }
         
         return cell
+    }
+}
+
+
+extension UIViewController {
+    func showErrorAlert(title: String, message: String, completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let conform = UIAlertAction(title: "확인",style: .default) { _ in
+            completion()
+        }
+        let cancel = UIAlertAction(title: "취소",style: .cancel)
+        
+        alert.addAction(conform)
+        alert.addAction(cancel)
+        present(alert, animated: true)
     }
 }

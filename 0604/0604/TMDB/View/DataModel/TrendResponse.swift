@@ -9,11 +9,11 @@ import Foundation
 
 struct TrendResponse: Decodable {
     var page: Int
-    var results: [Result]
+    var results: [TrendResult]
     let total_pages: Int
 }
 
-struct Result: Codable {
+struct TrendResult: Codable {
     let id: Int
     let originalTitle: String?
     let overview: String
