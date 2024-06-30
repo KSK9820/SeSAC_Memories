@@ -45,6 +45,7 @@
 		53BC90D92C1710F40033B486 /* trendType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BC90D82C1710F40033B486 /* trendType.swift */; };
 		53BC90DB2C1712AD0033B486 /* TrendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BC90DA2C1712AD0033B486 /* TrendResponse.swift */; };
 		53BC90DD2C171BEF0033B486 /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BC90DC2C171BEF0033B486 /* TrendTableViewCell.swift */; };
+		53C9E1872C31C137009AE7AD /* TMDBTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C9E1862C31C137009AE7AD /* TMDBTabBarController.swift */; };
 		53F7EFF02C18AB9500FC050C /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F7EFEF2C18AB9500FC050C /* OverviewTableViewCell.swift */; };
 		53F7EFF22C18B11700FC050C /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F7EFF12C18B11700FC050C /* CastTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		53BC90D82C1710F40033B486 /* trendType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trendType.swift; sourceTree = "<group>"; };
 		53BC90DA2C1712AD0033B486 /* TrendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendResponse.swift; sourceTree = "<group>"; };
 		53BC90DC2C171BEF0033B486 /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
+		53C9E1862C31C137009AE7AD /* TMDBTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBTabBarController.swift; sourceTree = "<group>"; };
 		53F7EFEF2C18AB9500FC050C /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
 		53F7EFF12C18B11700FC050C /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +212,7 @@
 				53BC90D62C170E2A0033B486 /* TrendViewController.swift */,
 				5390BD0C2C17F6D000E73533 /* CreditViewController.swift */,
 				5390BD162C18348300E73533 /* SearchViewController.swift */,
+				53C9E1862C31C137009AE7AD /* TMDBTabBarController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				5390BD0F2C17F75B00E73533 /* CreditType.swift in Sources */,
 				532660A42C10731B00011E3B /* LottoViewController.swift in Sources */,
 				53AF791C2C296848003F734B /* AdditionalMovieImageTableViewCell.swift in Sources */,
+				53C9E1872C31C137009AE7AD /* TMDBTabBarController.swift in Sources */,
 				538FAAE02C0F369F00950538 /* NetflixViewController.swift in Sources */,
 				53F7EFF02C18AB9500FC050C /* OverviewTableViewCell.swift in Sources */,
 				5390BD112C17FFEC00E73533 /* CreditHeaderView.swift in Sources */,

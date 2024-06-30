@@ -55,6 +55,7 @@ final class SearchViewController: UIViewController {
         collectionView.prefetchDataSource = self
         collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
         
+        navigationItem.title = "검색"
     }
     
     private func createCollectionViewLayout() -> UICollectionViewLayout {
@@ -83,6 +84,7 @@ final class SearchViewController: UIViewController {
                     self.data = data
                     self.collectionView.reloadData()
                     self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                    self.navigationItem.title = "\(self.searchBar.text!) 검색 결과"
                 } else {
                     self.data?.page = data.page
                     self.data?.results.append(contentsOf: data.results)
@@ -132,6 +134,13 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let result = data?.results else { return }
+        let vc = CreditViewController(trendData: result[indexPath.row])
+        
+        navigationController?.pushViewController(vc, animated: false)
     }
 }
 
