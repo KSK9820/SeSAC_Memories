@@ -9,21 +9,49 @@
 /* Begin PBXBuildFile section */
 		533E12AB2C33DDEA00885FAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12AA2C33DDEA00885FAA /* AppDelegate.swift */; };
 		533E12AD2C33DDEA00885FAA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12AC2C33DDEA00885FAA /* SceneDelegate.swift */; };
-		533E12AF2C33DDEA00885FAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12AE2C33DDEA00885FAA /* ViewController.swift */; };
+		533E12AF2C33DDEA00885FAA /* AddNewTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12AE2C33DDEA00885FAA /* AddNewTodoViewController.swift */; };
 		533E12B42C33DDED00885FAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 533E12B32C33DDED00885FAA /* Assets.xcassets */; };
 		533E12B72C33DDED00885FAA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 533E12B62C33DDED00885FAA /* Base */; };
 		533E12C12C33DE2400885FAA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 533E12C02C33DE2400885FAA /* .gitignore */; };
+		533E12C82C33E05000885FAA /* AddNewToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12C72C33E05000885FAA /* AddNewToDoViewModel.swift */; };
+		533E12CC2C33E8BE00885FAA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 533E12CB2C33E8BE00885FAA /* SnapKit */; };
+		533E12CF2C33E8E600885FAA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 533E12CE2C33E8E600885FAA /* RealmSwift */; };
+		533E12D22C33E99B00885FAA /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12D12C33E99B00885FAA /* ReuseIdentifiable.swift */; };
+		533E12D42C33E9AE00885FAA /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12D32C33E9AE00885FAA /* Binding.swift */; };
+		533E12D72C33EAB100885FAA /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12D62C33EAB100885FAA /* TextFieldTableViewCell.swift */; };
+		533E12D92C33ED2C00885FAA /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12D82C33ED2C00885FAA /* TextViewTableViewCell.swift */; };
+		533E12DD2C33FF0B00885FAA /* TodoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12DC2C33FF0B00885FAA /* TodoColor.swift */; };
+		533E12DF2C33FF2700885FAA /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12DE2C33FF2700885FAA /* LabelTableViewCell.swift */; };
+		533E12E22C345F3B00885FAA /* TodoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12E12C345F3B00885FAA /* TodoDTO.swift */; };
+		533E12E42C34619000885FAA /* TodoDataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12E32C34619000885FAA /* TodoDataBaseManager.swift */; };
+		533E12E82C34635D00885FAA /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12E72C34635D00885FAA /* TodoListViewController.swift */; };
+		533E12EB2C34669400885FAA /* TransferTableViewCellDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12EA2C34669400885FAA /* TransferTableViewCellDataDelegate.swift */; };
+		533E12EE2C34705600885FAA /* TodoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12ED2C34705600885FAA /* TodoListTableViewCell.swift */; };
+		533E12F12C34721F00885FAA /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12F02C34721F00885FAA /* TodoListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		533E12A72C33DDEA00885FAA /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		533E12AA2C33DDEA00885FAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		533E12AC2C33DDEA00885FAA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		533E12AE2C33DDEA00885FAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		533E12AE2C33DDEA00885FAA /* AddNewTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTodoViewController.swift; sourceTree = "<group>"; };
 		533E12B32C33DDED00885FAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		533E12B62C33DDED00885FAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		533E12B82C33DDED00885FAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		533E12C02C33DE2400885FAA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		533E12C72C33E05000885FAA /* AddNewToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewToDoViewModel.swift; sourceTree = "<group>"; };
+		533E12D12C33E99B00885FAA /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
+		533E12D32C33E9AE00885FAA /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		533E12D62C33EAB100885FAA /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		533E12D82C33ED2C00885FAA /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
+		533E12DC2C33FF0B00885FAA /* TodoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoColor.swift; sourceTree = "<group>"; };
+		533E12DE2C33FF2700885FAA /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
+		533E12E12C345F3B00885FAA /* TodoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDTO.swift; sourceTree = "<group>"; };
+		533E12E32C34619000885FAA /* TodoDataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDataBaseManager.swift; sourceTree = "<group>"; };
+		533E12E72C34635D00885FAA /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
+		533E12EA2C34669400885FAA /* TransferTableViewCellDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferTableViewCellDataDelegate.swift; sourceTree = "<group>"; };
+		533E12ED2C34705600885FAA /* TodoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewCell.swift; sourceTree = "<group>"; };
+		533E12F02C34721F00885FAA /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				533E12CF2C33E8E600885FAA /* RealmSwift in Frameworks */,
+				533E12CC2C33E8BE00885FAA /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,14 +87,131 @@
 		533E12A92C33DDEA00885FAA /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				533E12E52C34634900885FAA /* List */,
+				533E12E02C345F2D00885FAA /* DataBase */,
+				533E12DA2C33FEFF00885FAA /* DesignSystem */,
+				533E12D02C33E98900885FAA /* Utility */,
+				533E12C52C33E03700885FAA /* Add */,
 				533E12AA2C33DDEA00885FAA /* AppDelegate.swift */,
 				533E12AC2C33DDEA00885FAA /* SceneDelegate.swift */,
-				533E12AE2C33DDEA00885FAA /* ViewController.swift */,
 				533E12B32C33DDED00885FAA /* Assets.xcassets */,
 				533E12B52C33DDED00885FAA /* LaunchScreen.storyboard */,
 				533E12B82C33DDED00885FAA /* Info.plist */,
 			);
 			path = Todo;
+			sourceTree = "<group>";
+		};
+		533E12C52C33E03700885FAA /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				533E12E92C34666D00885FAA /* Protocol */,
+				533E12C92C33E05200885FAA /* View */,
+				533E12C62C33E04200885FAA /* ViewModel */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		533E12C62C33E04200885FAA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				533E12C72C33E05000885FAA /* AddNewToDoViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		533E12C92C33E05200885FAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				533E12D52C33EAA000885FAA /* Cell */,
+				533E12AE2C33DDEA00885FAA /* AddNewTodoViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		533E12D02C33E98900885FAA /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				533E12D12C33E99B00885FAA /* ReuseIdentifiable.swift */,
+				533E12D32C33E9AE00885FAA /* Binding.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		533E12D52C33EAA000885FAA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				533E12D62C33EAB100885FAA /* TextFieldTableViewCell.swift */,
+				533E12D82C33ED2C00885FAA /* TextViewTableViewCell.swift */,
+				533E12DE2C33FF2700885FAA /* LabelTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		533E12DA2C33FEFF00885FAA /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				533E12DB2C33FF0300885FAA /* Typography */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		533E12DB2C33FF0300885FAA /* Typography */ = {
+			isa = PBXGroup;
+			children = (
+				533E12DC2C33FF0B00885FAA /* TodoColor.swift */,
+			);
+			path = Typography;
+			sourceTree = "<group>";
+		};
+		533E12E02C345F2D00885FAA /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				533E12E12C345F3B00885FAA /* TodoDTO.swift */,
+				533E12E32C34619000885FAA /* TodoDataBaseManager.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		533E12E52C34634900885FAA /* List */ = {
+			isa = PBXGroup;
+			children = (
+				533E12EF2C34721100885FAA /* ViewModel */,
+				533E12E62C34635100885FAA /* View */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		533E12E62C34635100885FAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				533E12EC2C34704D00885FAA /* Cell */,
+				533E12E72C34635D00885FAA /* TodoListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		533E12E92C34666D00885FAA /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				533E12EA2C34669400885FAA /* TransferTableViewCellDataDelegate.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		533E12EC2C34704D00885FAA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				533E12ED2C34705600885FAA /* TodoListTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		533E12EF2C34721100885FAA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				533E12F02C34721F00885FAA /* TodoListViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,6 +231,8 @@
 			);
 			name = Todo;
 			packageProductDependencies = (
+				533E12CB2C33E8BE00885FAA /* SnapKit */,
+				533E12CE2C33E8E600885FAA /* RealmSwift */,
 			);
 			productName = Todo;
 			productReference = 533E12A72C33DDEA00885FAA /* Todo.app */;
@@ -114,6 +263,8 @@
 			);
 			mainGroup = 533E129E2C33DDEA00885FAA;
 			packageReferences = (
+				533E12CA2C33E8BE00885FAA /* XCRemoteSwiftPackageReference "SnapKit" */,
+				533E12CD2C33E8E600885FAA /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 533E12A82C33DDEA00885FAA /* Products */;
 			projectDirPath = "";
@@ -142,7 +293,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				533E12AF2C33DDEA00885FAA /* ViewController.swift in Sources */,
+				533E12F12C34721F00885FAA /* TodoListViewModel.swift in Sources */,
+				533E12DD2C33FF0B00885FAA /* TodoColor.swift in Sources */,
+				533E12AF2C33DDEA00885FAA /* AddNewTodoViewController.swift in Sources */,
+				533E12E82C34635D00885FAA /* TodoListViewController.swift in Sources */,
+				533E12E42C34619000885FAA /* TodoDataBaseManager.swift in Sources */,
+				533E12D92C33ED2C00885FAA /* TextViewTableViewCell.swift in Sources */,
+				533E12E22C345F3B00885FAA /* TodoDTO.swift in Sources */,
+				533E12D42C33E9AE00885FAA /* Binding.swift in Sources */,
+				533E12EB2C34669400885FAA /* TransferTableViewCellDataDelegate.swift in Sources */,
+				533E12EE2C34705600885FAA /* TodoListTableViewCell.swift in Sources */,
+				533E12D22C33E99B00885FAA /* ReuseIdentifiable.swift in Sources */,
+				533E12C82C33E05000885FAA /* AddNewToDoViewModel.swift in Sources */,
+				533E12D72C33EAB100885FAA /* TextFieldTableViewCell.swift in Sources */,
+				533E12DF2C33FF2700885FAA /* LabelTableViewCell.swift in Sources */,
 				533E12AB2C33DDEA00885FAA /* AppDelegate.swift in Sources */,
 				533E12AD2C33DDEA00885FAA /* SceneDelegate.swift in Sources */,
 			);
@@ -357,6 +521,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		533E12CA2C33E8BE00885FAA /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		533E12CD2C33E8E600885FAA /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.52.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		533E12CB2C33E8BE00885FAA /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 533E12CA2C33E8BE00885FAA /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		533E12CE2C33E8E600885FAA /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 533E12CD2C33E8E600885FAA /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 533E129F2C33DDEA00885FAA /* Project object */;
 }
