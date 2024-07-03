@@ -31,6 +31,9 @@ final class AddNewTodoViewController: UIViewController {
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextFieldTableViewCell {
             cell.removeTextFieldContent()
         }
+        if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? TextViewTableViewCell {
+            cell.removeTextViewContent()
+        }
     }
     
     @objc
@@ -115,6 +118,8 @@ extension AddNewTodoViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 cell.setPlaceholder(tableViewSectionTitle[indexPath.section][indexPath.row])
                 cell.backgroundColor = TodoColor.cellBackgroundColor
+                cell.delegate = self
+                
                 return cell
             }
         default:
@@ -127,11 +132,64 @@ extension AddNewTodoViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 1:
+            let vc = DueDateViewController()
+            vc.saveDueDate = { value in
+                if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? LabelTableViewCell {
+                    cell.setContent(value.ymdToString(.ymd))
+                }
+            }
+            self.navigationController?.pushViewController(vc, animated: false)
+        case 2:
+            let vc = TagViewController()
+            
+            vc.saveTag = { value in
+                if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? LabelTableViewCell {
+                    if let value {
+                        cell.setContent("# \(value)")
+                    }
+                }
+            }
+            
+            self.navigationController?.pushViewController(vc, animated: false)
+        case 3:
+            let vc = PriorityViewController()
+   
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(priorityReceivedNotification),
+                name: NSNotification.Name("priorityReceived"),
+                object: nil)
+            
+            self.navigationController?.pushViewController(vc, animated: false)
+        default:
+            break
+            
+        }
+    }
+    
+    @objc
+    private func priorityReceivedNotification(notification: Notification) {
+        if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as? LabelTableViewCell {
+            if let result = notification.userInfo?["priority"] as? Int {
+                cell.setContent(TodoPriority.allCases[result].rawValue)
+            }
+        }
+    }
+    
 }
 
 
 extension AddNewTodoViewController: TransferTableViewCellDataDelegate {
+    
     func textFieldValueDidChange(value: String?) {
         viewModel.saveTitle(value)
     }
+    
+    func textViewValueDidChange(value: String?) {
+        viewModel.saveContent(value)
+    }
+    
 }

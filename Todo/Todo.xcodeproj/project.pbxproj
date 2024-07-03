@@ -28,6 +28,10 @@
 		533E12EB2C34669400885FAA /* TransferTableViewCellDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12EA2C34669400885FAA /* TransferTableViewCellDataDelegate.swift */; };
 		533E12EE2C34705600885FAA /* TodoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12ED2C34705600885FAA /* TodoListTableViewCell.swift */; };
 		533E12F12C34721F00885FAA /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12F02C34721F00885FAA /* TodoListViewModel.swift */; };
+		53DE68A02C35A31F00873565 /* DueDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DE689F2C35A31F00873565 /* DueDateViewController.swift */; };
+		53DE68A32C35AA6900873565 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DE68A22C35AA6900873565 /* Date+Extension.swift */; };
+		53DE68A52C35BB6700873565 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DE68A42C35BB6700873565 /* TagViewController.swift */; };
+		53DE68A72C35BEA700873565 /* PriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DE68A62C35BEA700873565 /* PriorityViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +56,10 @@
 		533E12EA2C34669400885FAA /* TransferTableViewCellDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferTableViewCellDataDelegate.swift; sourceTree = "<group>"; };
 		533E12ED2C34705600885FAA /* TodoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewCell.swift; sourceTree = "<group>"; };
 		533E12F02C34721F00885FAA /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
+		53DE689F2C35A31F00873565 /* DueDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueDateViewController.swift; sourceTree = "<group>"; };
+		53DE68A22C35AA6900873565 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		53DE68A42C35BB6700873565 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
+		53DE68A62C35BEA700873565 /* PriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +95,7 @@
 		533E12A92C33DDEA00885FAA /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				53DE68A12C35AA6200873565 /* Extension */,
 				533E12E52C34634900885FAA /* List */,
 				533E12E02C345F2D00885FAA /* DataBase */,
 				533E12DA2C33FEFF00885FAA /* DesignSystem */,
@@ -124,6 +133,9 @@
 			children = (
 				533E12D52C33EAA000885FAA /* Cell */,
 				533E12AE2C33DDEA00885FAA /* AddNewTodoViewController.swift */,
+				53DE689F2C35A31F00873565 /* DueDateViewController.swift */,
+				53DE68A42C35BB6700873565 /* TagViewController.swift */,
+				53DE68A62C35BEA700873565 /* PriorityViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -214,6 +226,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		53DE68A12C35AA6200873565 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				53DE68A22C35AA6900873565 /* Date+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -296,6 +316,8 @@
 				533E12F12C34721F00885FAA /* TodoListViewModel.swift in Sources */,
 				533E12DD2C33FF0B00885FAA /* TodoColor.swift in Sources */,
 				533E12AF2C33DDEA00885FAA /* AddNewTodoViewController.swift in Sources */,
+				53DE68A02C35A31F00873565 /* DueDateViewController.swift in Sources */,
+				53DE68A72C35BEA700873565 /* PriorityViewController.swift in Sources */,
 				533E12E82C34635D00885FAA /* TodoListViewController.swift in Sources */,
 				533E12E42C34619000885FAA /* TodoDataBaseManager.swift in Sources */,
 				533E12D92C33ED2C00885FAA /* TextViewTableViewCell.swift in Sources */,
@@ -304,11 +326,13 @@
 				533E12EB2C34669400885FAA /* TransferTableViewCellDataDelegate.swift in Sources */,
 				533E12EE2C34705600885FAA /* TodoListTableViewCell.swift in Sources */,
 				533E12D22C33E99B00885FAA /* ReuseIdentifiable.swift in Sources */,
+				53DE68A52C35BB6700873565 /* TagViewController.swift in Sources */,
 				533E12C82C33E05000885FAA /* AddNewToDoViewModel.swift in Sources */,
 				533E12D72C33EAB100885FAA /* TextFieldTableViewCell.swift in Sources */,
 				533E12DF2C33FF2700885FAA /* LabelTableViewCell.swift in Sources */,
 				533E12AB2C33DDEA00885FAA /* AppDelegate.swift in Sources */,
 				533E12AD2C33DDEA00885FAA /* SceneDelegate.swift in Sources */,
+				53DE68A32C35AA6900873565 /* Date+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

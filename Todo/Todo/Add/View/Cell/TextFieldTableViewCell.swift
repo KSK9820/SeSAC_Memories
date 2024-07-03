@@ -60,7 +60,7 @@ final class TextFieldTableViewCell: UITableViewCell {
     
     @objc
     func textFieldDidChange() {
-        delegate?.textFieldValueDidChange?(value: titleTextField.text)
+        delegate?.textFieldValueDidChange(value: titleTextField.text)
     }
 }
 

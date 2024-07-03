@@ -13,10 +13,19 @@ final class TodoListViewModel {
     private(set) var todoData: Results<TodoDTO>?
     
     init() {
-        self.todoData = TodoDataBaseManager.shared.readData(type: TodoDTO.self)
+        readTodoData()
     }
     
-    
+    private func readTodoData() {
+        TodoDataBaseManager.shared.readData(type: TodoDTO.self) { result in
+            switch result {
+            case .success(let data):
+                self.todoData = data
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     
     
 }

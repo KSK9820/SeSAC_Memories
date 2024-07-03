@@ -10,8 +10,13 @@ import SnapKit
 
 final class TextViewTableViewCell: UITableViewCell {
     
-    private let contentTextView = UITextView()
+    weak var delegate: TransferTableViewCellDataDelegate?
     
+    private let contentTextView = UITextView()
+
+    
+    // MARK: - Init
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -19,14 +24,21 @@ final class TextViewTableViewCell: UITableViewCell {
         configureLayout()
         configureUI()
     }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    // MARK: - Internal Method
     
     func setPlaceholder(_ placeholder: String?) {
         contentTextView.text = placeholder
         contentTextView.textColor = .gray
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func removeTextViewContent() {
+        contentTextView.text = nil
     }
     
     
@@ -47,7 +59,17 @@ final class TextViewTableViewCell: UITableViewCell {
         contentTextView.font = .systemFont(ofSize: 16, weight: .medium)
         contentTextView.backgroundColor = .clear
         contentTextView.textContainer.maximumNumberOfLines = 4
+        contentTextView.delegate = self
     }
     
 }
 
+
+extension TextViewTableViewCell: UITextViewDelegate {
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        delegate?.textViewValueDidChange(value: textView.text)
+        return true
+    }
+    
+}

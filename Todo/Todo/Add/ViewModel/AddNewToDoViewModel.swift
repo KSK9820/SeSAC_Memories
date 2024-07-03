@@ -13,7 +13,6 @@ final class AddNewToDoViewModel {
     
     func validateInput() -> Bool {
         if todoData.title.isEmpty { return false }
-        
         saveTodoData()
         
         return true
@@ -21,6 +20,10 @@ final class AddNewToDoViewModel {
     
     func saveTitle(_ title: String?) {
         todoData.title = title ?? ""
+    }
+    
+    func saveContent(_ content: String?) {
+        todoData.content = content
     }
     
     

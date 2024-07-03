@@ -12,24 +12,43 @@ final class TodoDataBaseManager {
     
     static let shared = TodoDataBaseManager()
     
-    let realm = try! Realm()
-
     private init() { }
     
     func saveData<T: Object>(_ data: T) {
-        try! realm.write({
-            realm.add(data)
-        })
-    }
-    
-    func readData<T: Object>(type: T.Type) -> Results<T> {
-        return realm.objects(type)
-    }
-    
-    func removeData<T: Object>(_ data: T) {
-        try! realm.write {
-            realm.delete(data)
+           do {
+               let realm = try Realm()
+               try realm.write {
+                   realm.add(data)
+               }
+           } catch {
+               print("Error saving data to Realm: \(error)")
+           }
+       }
+       
+
+    func readData<T: Object>(type: T.Type, completion: @escaping (Result<Results<T>, Error>) -> Void) {
+        do {
+            let realm = try Realm()
+            let results = realm.objects(type)
+            completion(.success(results))
+            
+        } catch {
+            print("Error reading data from Realm: \(error)")
+            completion(.failure(error))
+            
         }
     }
+
+       
+       func removeData<T: Object>(_ data: T) {
+           do {
+               let realm = try Realm()
+               try realm.write {
+                   realm.delete(data)
+               }
+           } catch {
+               print("Error removing data from Realm: \(error)")
+           }
+       }
     
 }

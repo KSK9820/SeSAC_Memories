@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-@objc
 protocol TransferTableViewCellDataDelegate: AnyObject {
-    @objc optional func textFieldValueDidChange(value: String?)
+    func textFieldValueDidChange(value: String?)
+    func textViewValueDidChange(value: String?)
 }

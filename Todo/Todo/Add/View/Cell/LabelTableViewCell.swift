@@ -9,8 +9,23 @@ import UIKit
 
 final class LabelTableViewCell: UITableViewCell {
     
-    private let titleLabel = UILabel()
-
+    private let titleLabel: UILabel = {
+        let view = UILabel()
+        
+        view.textColor = .white
+        view.font = .systemFont(ofSize: 16)
+        
+        return view
+    }()
+    
+    private let contentLabel: UILabel = {
+        let view = UILabel()
+        
+        view.textColor = .white
+        view.font = .systemFont(ofSize: 15)
+        
+        return view
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -24,17 +39,18 @@ final class LabelTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+
     func setTitle(_ title: String) {
-        var content = defaultContentConfiguration()
-        content.text = title
-        
-        let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.white,
-            .font: UIFont.systemFont(ofSize: 16.0)
-        ]
-        content.attributedText = NSAttributedString(string: title, attributes: attributes)
-     
-        self.contentConfiguration = content
+        titleLabel.text = title
+    }
+    
+    func removeContent() {
+        contentLabel.text = ""
+    }
+    
+    func setContent(_ text: String?) {
+        contentLabel.text = text
+        print(contentLabel.text)
     }
     
     
@@ -42,11 +58,17 @@ final class LabelTableViewCell: UITableViewCell {
     
     private func configureHierarchy() {
         contentView.addSubview(titleLabel)
+        contentView.addSubview(contentLabel)
     }
     
     private func configureLayout() {
         titleLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(12)
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(12)
+        }
+        contentLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-12)
         }
     }
     
