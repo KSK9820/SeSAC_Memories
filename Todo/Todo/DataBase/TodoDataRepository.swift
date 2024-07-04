@@ -8,20 +8,22 @@
 import Foundation
 import RealmSwift
 
-final class TodoDataBaseManager {
+final class TodoDataRepository {
     
-    static let shared = TodoDataBaseManager()
+//    static let shared = TodoDataRepository()
     
-    private init() { }
+//    private init() { }
     
-    func saveData<T: Object>(_ data: T) {
+    func saveData<T: Object>(_ data: T, completion: @escaping (Bool) -> Void) {
            do {
                let realm = try Realm()
                try realm.write {
                    realm.add(data)
                }
+               completion(true)
            } catch {
                print("Error saving data to Realm: \(error)")
+               completion(false)
            }
        }
        
@@ -40,14 +42,16 @@ final class TodoDataBaseManager {
     }
 
        
-       func removeData<T: Object>(_ data: T) {
+       func removeData<T: Object>(_ data: T, completion: @escaping (Bool) -> Void) {
            do {
                let realm = try Realm()
                try realm.write {
                    realm.delete(data)
                }
+               completion(true)
            } catch {
                print("Error removing data from Realm: \(error)")
+               completion(false)
            }
        }
     

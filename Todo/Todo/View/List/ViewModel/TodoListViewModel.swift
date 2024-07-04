@@ -10,6 +10,8 @@ import RealmSwift
 
 final class TodoListViewModel {
     
+    private let repository = TodoDataRepository()
+    
     private(set) var todoData: Results<TodoDTO>?
     
     init() {
@@ -17,7 +19,7 @@ final class TodoListViewModel {
     }
     
     private func readTodoData() {
-        TodoDataBaseManager.shared.readData(type: TodoDTO.self) { result in
+        repository.readData(type: TodoDTO.self) { result in
             switch result {
             case .success(let data):
                 self.todoData = data
@@ -27,5 +29,14 @@ final class TodoListViewModel {
         }
     }
     
+    
+    func removeTodoData(_ indexPath: IndexPath, completion: @escaping (Bool) -> Void) {
+        if let todoData {
+            let data = todoData[indexPath.row]
+            repository.removeData(data) { result in
+                completion(result)
+            }
+        }
+    }
     
 }

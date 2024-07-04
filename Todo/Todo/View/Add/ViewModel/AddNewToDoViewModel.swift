@@ -9,13 +9,22 @@ import Foundation
 
 final class AddNewToDoViewModel {
     
+    private let repository = TodoDataRepository()
+    
     private(set) var todoData = TodoDTO(title: "")
     
-    func validateInput() -> Bool {
-        if todoData.title.isEmpty { return false }
-        saveTodoData()
+    
+    // MARK: - Method
+    
+    func validateInput(_ completion: @escaping ((Bool) -> Void)) {
+        if todoData.title.isEmpty {
+            completion(false)
+            return
+        }
         
-        return true
+        saveTodoData { result in
+            completion(result)
+        }
     }
     
     func saveTitle(_ title: String?) {
@@ -27,8 +36,10 @@ final class AddNewToDoViewModel {
     }
     
     
-    private func saveTodoData() {
-        TodoDataBaseManager.shared.saveData(todoData)
+    private func saveTodoData(_ completion: @escaping ((Bool) -> Void)) {
+        repository.saveData(todoData) { result in
+            completion(result)
+        }
     }
     
 }

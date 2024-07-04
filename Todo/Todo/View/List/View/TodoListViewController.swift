@@ -73,6 +73,7 @@ final class TodoListViewController: UIViewController {
 
 
 extension TodoListViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let data = viewModel.todoData {
             return data.count
@@ -92,11 +93,15 @@ extension TodoListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let remove = UIContextualAction(style: .normal, title: "delete") { action, view, completion in
-            if let data = self.viewModel.todoData {
-                TodoDataBaseManager.shared.removeData(data[indexPath.row])
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
+        let remove = UIContextualAction(style: .normal, title: "delete") { [weak self] action, view, completion in
+            self?.viewModel.removeTodoData(indexPath, completion: { result in
+                switch result {
+                case true:
+                    self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+                case false:
+                    self?.makeAlert(title: "삭제 실패", message: "삭제에 실패하였습니다.", option: nil, completion: nil)
+                }
+            })
         }
         
         return UISwipeActionsConfiguration(actions: [remove])

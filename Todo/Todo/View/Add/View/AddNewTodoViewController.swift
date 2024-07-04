@@ -38,8 +38,13 @@ final class AddNewTodoViewController: UIViewController {
     
     @objc
     func appendButtonTapped() {
-        if viewModel.validateInput() {
-            navigationController?.pushViewController(TodoListViewController(), animated: false)
+        viewModel.validateInput { [weak self] result in
+            switch result {
+            case true:
+                self?.navigationController?.pushViewController(TodoListViewController(), animated: false)
+            case false:
+                self?.makeAlert(title: "저장 실패", message: "다시 시도해주세요.", option: nil, completion: nil)
+            }
         }
     }
     
