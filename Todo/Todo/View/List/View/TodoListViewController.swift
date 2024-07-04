@@ -20,6 +20,14 @@ final class TodoListViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
+        databinding()
+    }
+    
+    private func databinding() {
+        viewModel.todoData.bind { [weak self] data in
+//            self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self?.tableView.reloadData()
+        }
     }
     
     // MARK: - Configure UI
@@ -75,7 +83,7 @@ final class TodoListViewController: UIViewController {
 extension TodoListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let data = viewModel.todoData {
+        if let data = viewModel.todoData.value {
             return data.count
         }
         return 0
@@ -84,7 +92,7 @@ extension TodoListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.reuseIdentifier, for: indexPath) as? TodoListTableViewCell else { return UITableViewCell() }
         
-        if let data = viewModel.todoData {
+        if let data = viewModel.todoData.value {
             cell.setContent(data[indexPath.row])
         }
         cell.backgroundColor = .clear
@@ -94,14 +102,16 @@ extension TodoListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let remove = UIContextualAction(style: .normal, title: "delete") { [weak self] action, view, completion in
-            self?.viewModel.removeTodoData(indexPath, completion: { result in
-                switch result {
-                case true:
-                    self?.tableView.deleteRows(at: [indexPath], with: .automatic)
-                case false:
-                    self?.makeAlert(title: "삭제 실패", message: "삭제에 실패하였습니다.", option: nil, completion: nil)
-                }
-            })
+//            self?.viewModel.removeTodoData(indexPath, completion: { result in
+//                switch result {
+//                case true:
+//                    
+//                    break
+//                case false:
+//                    self?.makeAlert(title: "삭제 실패", message: "삭제에 실패하였습니다.", option: nil, completion: nil)
+//                }
+//            })
+            self?.viewModel.updateTodoData(indexPath)
         }
         
         return UISwipeActionsConfiguration(actions: [remove])

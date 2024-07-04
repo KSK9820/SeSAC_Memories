@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import RealmSwift
 
 final class TodoListViewModel {
     
     private let repository = TodoDataRepository()
     
-    private(set) var todoData: Results<TodoDTO>?
+    private(set) var todoData = Binding<[TodoDTO]?>(nil)
     
     init() {
         readTodoData()
@@ -22,21 +21,41 @@ final class TodoListViewModel {
         repository.readData(type: TodoDTO.self) { result in
             switch result {
             case .success(let data):
-                self.todoData = data
+                self.todoData.value = data
             case .failure(let error):
                 print(error)
             }
         }
     }
     
+    func updateTodoData(_ indexPath: IndexPath) {
+        removeTodoData(indexPath) { response in
+            switch response {
+            case true:
+                self.reloadTodoData()
+            case false:
+                break
+            }
+        }
+    }
     
-    func removeTodoData(_ indexPath: IndexPath, completion: @escaping (Bool) -> Void) {
-        if let todoData {
-            let data = todoData[indexPath.row]
+    private func removeTodoData(_ indexPath: IndexPath, completion: @escaping (Bool) -> Void) {
+        if let data = todoData.value?[indexPath.row] {
             repository.removeData(data) { result in
                 completion(result)
             }
         }
+    }
+        
+    private func reloadTodoData() {
+        repository.readData(type: TodoDTO.self, completion: { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.todoData.value = data
+            case .failure(let error):
+                print(error)
+            }
+        })
     }
     
 }
