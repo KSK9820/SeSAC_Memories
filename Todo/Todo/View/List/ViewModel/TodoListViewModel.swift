@@ -12,8 +12,10 @@ final class TodoListViewModel {
     private let repository = TodoDataRepository()
     
     private(set) var todoData = Binding<[TodoDTO]?>(nil)
+    var classifyType: ClassifyTodo
     
-    init() {
+    init(_ classifyType: ClassifyTodo) {
+        self.classifyType = classifyType
         readTodoData()
     }
     
@@ -21,10 +23,22 @@ final class TodoListViewModel {
         repository.readData(type: TodoDTO.self, sort: sort) { result in
             switch result {
             case .success(let data):
-                //self.todoData.value = data
                 let fixData = data.filter { $0.isFix == true }
                 let nonFixData = data.filter { $0.isFix == false}
-                self.todoData.value = fixData + nonFixData
+                let data = fixData + nonFixData
+                
+                switch self.classifyType {
+                case .today:
+                    self.todoData.value = data.filter { $0.dueDate == Date() }
+                case .schedule:
+                    self.todoData.value = data.filter { $0.dueDate ?? Date() > Date() }
+                case .all:
+                    self.todoData.value = data
+                case .flag:
+                    self.todoData.value = fixData
+                case .complete:
+                    self.todoData.value = data.filter { $0.isFinished }
+                }
             case .failure(let error):
                 print(error)
             }

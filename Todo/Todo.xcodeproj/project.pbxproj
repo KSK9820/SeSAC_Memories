@@ -30,6 +30,8 @@
 		533E12F12C34721F00885FAA /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12F02C34721F00885FAA /* TodoListViewModel.swift */; };
 		536C64C92C36889D00890316 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C64C82C36889D00890316 /* UIViewController+Extension.swift */; };
 		537A27F82C3ABFAB00173670 /* ClassifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A27F72C3ABFAB00173670 /* ClassifyViewController.swift */; };
+		537A27FB2C3AFF6700173670 /* ClassifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A27FA2C3AFF6700173670 /* ClassifyViewModel.swift */; };
+		537A27FD2C3B002800173670 /* ClassifyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A27FC2C3B002800173670 /* ClassifyCollectionViewCell.swift */; };
 		53DE68A02C35A31F00873565 /* DueDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DE689F2C35A31F00873565 /* DueDateViewController.swift */; };
 		53DE68A32C35AA6900873565 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DE68A22C35AA6900873565 /* Date+Extension.swift */; };
 		53DE68A52C35BB6700873565 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DE68A42C35BB6700873565 /* TagViewController.swift */; };
@@ -60,6 +62,8 @@
 		533E12F02C34721F00885FAA /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
 		536C64C82C36889D00890316 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		537A27F72C3ABFAB00173670 /* ClassifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyViewController.swift; sourceTree = "<group>"; };
+		537A27FA2C3AFF6700173670 /* ClassifyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyViewModel.swift; sourceTree = "<group>"; };
+		537A27FC2C3B002800173670 /* ClassifyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyCollectionViewCell.swift; sourceTree = "<group>"; };
 		53DE689F2C35A31F00873565 /* DueDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueDateViewController.swift; sourceTree = "<group>"; };
 		53DE68A22C35AA6900873565 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		53DE68A42C35BB6700873565 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 		537A27F52C3ABF9400173670 /* Classify */ = {
 			isa = PBXGroup;
 			children = (
+				537A27F92C3AFF5A00173670 /* ViewModel */,
 				537A27F62C3ABFA300173670 /* View */,
 			);
 			path = Classify;
@@ -251,8 +256,17 @@
 			isa = PBXGroup;
 			children = (
 				537A27F72C3ABFAB00173670 /* ClassifyViewController.swift */,
+				537A27FC2C3B002800173670 /* ClassifyCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		537A27F92C3AFF5A00173670 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				537A27FA2C3AFF6700173670 /* ClassifyViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		53DE68A12C35AA6200873565 /* Extension */ = {
@@ -351,10 +365,12 @@
 				533E12E82C34635D00885FAA /* TodoListViewController.swift in Sources */,
 				533E12E42C34619000885FAA /* TodoDataRepository.swift in Sources */,
 				533E12D92C33ED2C00885FAA /* TextViewTableViewCell.swift in Sources */,
+				537A27FB2C3AFF6700173670 /* ClassifyViewModel.swift in Sources */,
 				533E12E22C345F3B00885FAA /* TodoDTO.swift in Sources */,
 				533E12D42C33E9AE00885FAA /* Binding.swift in Sources */,
 				533E12EB2C34669400885FAA /* TransferTableViewCellDataDelegate.swift in Sources */,
 				533E12EE2C34705600885FAA /* TodoListTableViewCell.swift in Sources */,
+				537A27FD2C3B002800173670 /* ClassifyCollectionViewCell.swift in Sources */,
 				533E12D22C33E99B00885FAA /* ReuseIdentifiable.swift in Sources */,
 				53DE68A52C35BB6700873565 /* TagViewController.swift in Sources */,
 				533E12C82C33E05000885FAA /* AddNewToDoViewModel.swift in Sources */,

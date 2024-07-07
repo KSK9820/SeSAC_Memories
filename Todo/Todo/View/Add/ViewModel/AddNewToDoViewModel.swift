@@ -56,12 +56,6 @@ final class AddNewToDoViewModel {
     
 }
 
-enum TodoStatus {
-    case today
-    case schedule
-    case all
-    case flag
-    case complete
-}
+
 
 

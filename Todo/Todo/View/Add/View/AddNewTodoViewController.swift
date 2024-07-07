@@ -15,7 +15,7 @@ final class AddNewTodoViewController: UIViewController {
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
     private let tableViewSectionTitle = [["제목", "메모"], ["마감일"], ["태그"], ["우선 순위"], ["이미지 추가"]]
-    
+    var dismissAction: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +36,7 @@ final class AddNewTodoViewController: UIViewController {
 //        }
 //    }
     
-    @objc
-    func appendButtonTapped() {
-        viewModel.validateInput { [weak self] result in
-            switch result {
-            case true:
-                self?.navigationController?.pushViewController(TodoListViewController(), animated: false)
-            case false:
-                self?.makeAlert(title: "저장 실패", message: "다시 시도해주세요.", option: nil, completion: nil)
-            }
-        }
-    }
+ 
     
     // MARK: - Configure UI
     
@@ -63,7 +53,7 @@ final class AddNewTodoViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = TodoColor.backgroundColor
+        view.backgroundColor = .black
         
         configureNavitaion()
         configureTableView()
@@ -72,7 +62,7 @@ final class AddNewTodoViewController: UIViewController {
     private func configureNavitaion() {
         navigationItem.title = "새로운 할일 추가하기"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "취소", style: .plain, target: self, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cnacelButtonTapped))
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(appendButtonTapped))
         navigationItem.rightBarButtonItem?.tintColor = .darkGray
@@ -88,6 +78,28 @@ final class AddNewTodoViewController: UIViewController {
         
         tableView.backgroundColor = .clear
         
+    }
+    
+    @objc
+    func appendButtonTapped() {
+        
+        viewModel.validateInput { [weak self] result in
+            switch result {
+            case true:
+                let vm = TodoListViewModel(.all)
+                let vc = TodoListViewController(vm)
+                self?.dismiss(animated: false)
+                self?.dismissAction?()
+            case false:
+                self?.makeAlert(title: "저장 실패", message: "다시 시도해주세요.", option: nil, completion: nil)
+            }
+        }
+        
+    }
+    
+    @objc
+    private func cnacelButtonTapped() {
+        dismiss(animated: false)
     }
 }
 

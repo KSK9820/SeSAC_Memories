@@ -11,11 +11,20 @@ import SnapKit
 
 final class TodoListViewController: UIViewController {
     
-    private let viewModel = TodoListViewModel()
+    private let viewModel: TodoListViewModel
     
     private let tableView = UITableView()
     
     var backAction: (() -> Void)?
+    
+    init(_ viewModel: TodoListViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +69,7 @@ final class TodoListViewController: UIViewController {
         navigationItem.rightBarButtonItem = optionButton
         navigationItem.rightBarButtonItem?.tintColor = .white
         
-        navigationItem.title = "전체"
+        navigationItem.title = viewModel.classifyType.rawValue
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
@@ -108,12 +117,7 @@ final class TodoListViewController: UIViewController {
     
     @objc
     func backButtonTapped() {
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        let sceneDelegate = windowScene?.delegate as? SceneDelegate
-        let rootviewController = UINavigationController(rootViewController: ClassifyViewController())
-        
-        sceneDelegate?.window?.rootViewController = rootviewController
-        sceneDelegate?.window?.makeKeyAndVisible()
+        navigationController?.popViewController(animated: false)
     }
     
 }
@@ -138,7 +142,7 @@ extension TodoListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.finishTodo = { [weak self] in
             self?.viewModel.updateToggleData(indexPath, item: "isFinished")
         }
-        
+      
         return cell
     }
     
