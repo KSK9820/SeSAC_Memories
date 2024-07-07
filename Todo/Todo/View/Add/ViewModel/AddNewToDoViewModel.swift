@@ -35,6 +35,18 @@ final class AddNewToDoViewModel {
         todoData.content = content
     }
     
+    func saveDueDate(_ date: Date?) {
+        todoData.dueDate = date
+    }
+    
+    func saveTag(_ tag: String?) {
+        todoData.tag = tag
+    }
+    
+    func savePriority(_ priority: Int) {
+        todoData.priority = priority
+    }
+    
     
     private func saveTodoData(_ completion: @escaping ((Bool) -> Void)) {
         repository.saveData(todoData) { result in

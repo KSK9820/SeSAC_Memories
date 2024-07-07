@@ -17,22 +17,26 @@ final class TodoListViewModel {
         readTodoData()
     }
     
-    private func readTodoData() {
-        repository.readData(type: TodoDTO.self) { result in
+    func readTodoData(sort: (by: String, order: ReadOrder)? = nil) {
+        repository.readData(type: TodoDTO.self, sort: sort) { result in
             switch result {
             case .success(let data):
-                self.todoData.value = data
+                //self.todoData.value = data
+                let fixData = data.filter { $0.isFix == true }
+                let nonFixData = data.filter { $0.isFix == false}
+                self.todoData.value = fixData + nonFixData
             case .failure(let error):
                 print(error)
             }
         }
     }
     
+
     func updateTodoData(_ indexPath: IndexPath) {
         removeTodoData(indexPath) { response in
             switch response {
             case true:
-                self.reloadTodoData()
+                self.readTodoData()
             case false:
                 break
             }
@@ -46,16 +50,58 @@ final class TodoListViewModel {
             }
         }
     }
+    
+    private func toggleData(_ indexPath: IndexPath, item: String) -> [String: Any]? {
+        var value: [String: Any]?
         
-    private func reloadTodoData() {
-        repository.readData(type: TodoDTO.self, completion: { [weak self] result in
-            switch result {
-            case .success(let data):
-                self?.todoData.value = data
-            case .failure(let error):
-                print(error)
+        guard let data = todoData.value else { return nil }
+        
+        switch item {
+        case "isFix":
+            if data[indexPath.row].isFix == true {
+                value = ["id": data[indexPath.row].id, "isFix": false]
+            } else {
+                value = ["id": data[indexPath.row].id, "isFix": true]
             }
-        })
+        case "isFinished":
+            if data[indexPath.row].isFinished == true {
+                value = ["id": data[indexPath.row].id, "isFinished": false]
+            } else {
+                value = ["id": data[indexPath.row].id, "isFinished": true]
+            }
+        default:
+            break
+        }
+        
+        return value
     }
     
+    func updateToggleData(_ indexPath: IndexPath, item: String) {
+        let value = toggleData(indexPath, item: item)
+        
+        repository.updateData(TodoDTO.self, value: value) { finish in
+            switch finish {
+            case true:
+                self.readTodoData()
+            case false:
+                break
+            }
+        }
+    }
+    
+  
+}
+
+enum ReadOrder {
+    case asc
+    case des
+    
+    var boolean: Bool {
+        switch self {
+        case .asc:
+            return true
+        case .des:
+            return false
+        }
+    }
 }

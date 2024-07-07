@@ -50,7 +50,6 @@ final class LabelTableViewCell: UITableViewCell {
     
     func setContent(_ text: String?) {
         contentLabel.text = text
-        print(contentLabel.text)
     }
     
     

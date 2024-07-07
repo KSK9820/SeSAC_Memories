@@ -9,6 +9,9 @@ import UIKit
 
 final class TodoListTableViewCell: UITableViewCell {
     
+    var indexPath: IndexPath?
+    var finishTodo: (() -> Void)?
+    
     private let horizontalStackView: UIStackView = {
         let view = UIStackView()
         
@@ -33,7 +36,8 @@ final class TodoListTableViewCell: UITableViewCell {
         
         view.axis = .vertical
         view.alignment = .fill
-        view.distribution = .fillProportionally
+        view.distribution = .fill
+        view.spacing = 8
         
         return view
     }()
@@ -60,7 +64,8 @@ final class TodoListTableViewCell: UITableViewCell {
         let view = UIStackView()
         
         view.axis = .horizontal
-        view.distribution = .fillProportionally
+        view.distribution = .fill
+        view.spacing = 12
         
         return view
     }()
@@ -88,6 +93,7 @@ final class TodoListTableViewCell: UITableViewCell {
         
         configureHierarchy()
         configureLayout()
+        configureAction()
     }
     
     required init?(coder: NSCoder) {
@@ -95,10 +101,15 @@ final class TodoListTableViewCell: UITableViewCell {
     }
     
     func setContent(_ data: TodoDTO) {
-        titleLabel.text = data.title
-        contentLabel.text = "할일~"
-        dateLabel.text = "2020.23.23"
-        tagLabel.text = "#아아아ㅏ아앙"
+        titleLabel.text = Array(repeating: "⭐️", count: 4 - (data.priority ?? 4)).joined() + " " + data.title
+        contentLabel.text = data.content
+        dateLabel.text = data.dueDate?.toString(.ymd)
+        tagLabel.text = data.tag
+        circleButton.setImage(UIImage(systemName: data.isFinished ? "circle.circle.fill" : "circle"), for: .normal)
+    }
+    
+    func setIndexPath(_ indexPath: IndexPath) {
+        self.indexPath = indexPath
     }
     
     
@@ -116,8 +127,21 @@ final class TodoListTableViewCell: UITableViewCell {
     }
     
     private func configureLayout() {
+        circleButton.snp.makeConstraints { make in
+            make.width.equalTo(24)
+        }
+        
         horizontalStackView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(10)
         }
+    }
+    
+    private func configureAction() {
+        circleButton.addTarget(self, action: #selector(circleButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    func circleButtonTapped() {
+        finishTodo?()
     }
 }

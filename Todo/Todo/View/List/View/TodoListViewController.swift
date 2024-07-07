@@ -1,3 +1,4 @@
+
 //
 //  TodoListViewController.swift
 //  Todo
@@ -14,6 +15,8 @@ final class TodoListViewController: UIViewController {
     
     private let tableView = UITableView()
     
+    var backAction: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +28,6 @@ final class TodoListViewController: UIViewController {
     
     private func databinding() {
         viewModel.todoData.bind { [weak self] data in
-//            self?.tableView.deleteRows(at: [indexPath], with: .automatic)
             self?.tableView.reloadData()
         }
     }
@@ -53,7 +55,9 @@ final class TodoListViewController: UIViewController {
     private func configureNavigation() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem?.tintColor = .white
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), style: .plain, target: self, action: nil)
+        let optionButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), style: .plain, target: self, action: nil)
+        optionButton.menu = createMenu()
+        navigationItem.rightBarButtonItem = optionButton
         navigationItem.rightBarButtonItem?.tintColor = .white
         
         navigationItem.title = "전체"
@@ -70,13 +74,48 @@ final class TodoListViewController: UIViewController {
         tableView.register(TodoListTableViewCell.self, forCellReuseIdentifier: TodoListTableViewCell.reuseIdentifier)
         
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
         tableView.backgroundColor = .clear
     }
     
+    private func createMenu() -> UIMenu {
+        let highPriority = UIAction(title: "중요도 높은 순") { [weak self] action in
+            self?.viewModel.readTodoData(sort: ("priority", .asc))
+        }
+        let lowPriority = UIAction(title: "중요도 낮은 순") { [weak self] action in
+            self?.viewModel.readTodoData(sort: ("priority", .des))
+        }
+        
+        let highName = UIAction(title: "이름 높은 순") { [weak self] action in
+            self?.viewModel.readTodoData(sort: ("title", .asc))
+        }
+        
+        let lowName = UIAction(title: "이름 낮은 순") { [weak self] action in
+            self?.viewModel.readTodoData(sort: ("title", .des))
+        }
+        
+        let latestDate = UIAction(title: "마감 기한 빠른 순") { [weak self] action in
+            self?.viewModel.readTodoData(sort: ("dueDate", .asc))
+        }
+        
+        let lateDate = UIAction(title: "마감 기한 늦은 순") { [weak self] action in
+            self?.viewModel.readTodoData(sort: ("dueDate", .des))
+        }
+        
+        return UIMenu(title: "", children: [highPriority, lowPriority, highName, lowName, latestDate, lateDate])
+    }
+    
+    
     @objc
     func backButtonTapped() {
-        navigationController?.popViewController(animated: false)
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        let rootviewController = UINavigationController(rootViewController: ClassifyViewController())
+        
+        sceneDelegate?.window?.rootViewController = rootviewController
+        sceneDelegate?.window?.makeKeyAndVisible()
     }
+    
 }
 
 
@@ -96,25 +135,22 @@ extension TodoListViewController: UITableViewDataSource, UITableViewDelegate {
             cell.setContent(data[indexPath.row])
         }
         cell.backgroundColor = .clear
+        cell.finishTodo = { [weak self] in
+            self?.viewModel.updateToggleData(indexPath, item: "isFinished")
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let remove = UIContextualAction(style: .normal, title: "delete") { [weak self] action, view, completion in
-//            self?.viewModel.removeTodoData(indexPath, completion: { result in
-//                switch result {
-//                case true:
-//                    
-//                    break
-//                case false:
-//                    self?.makeAlert(title: "삭제 실패", message: "삭제에 실패하였습니다.", option: nil, completion: nil)
-//                }
-//            })
             self?.viewModel.updateTodoData(indexPath)
         }
+        let fix = UIContextualAction(style: .normal, title: "fix") { [weak self] action, view, completion in
+            self?.viewModel.updateToggleData(indexPath, item: "isFix")
+        }
         
-        return UISwipeActionsConfiguration(actions: [remove])
+        return UISwipeActionsConfiguration(actions: [remove, fix])
     }
     
 }

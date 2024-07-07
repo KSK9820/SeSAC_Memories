@@ -54,7 +54,7 @@ final class PriorityViewController: UIViewController {
     // 순서대로 나오지 않는 문제가 있음
     private func configureUI() {
         let segmentWidth = segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments)
-
+       
         for index in 0..<segmentedControl.numberOfSegments {
             let label = UILabel()
             
@@ -63,14 +63,14 @@ final class PriorityViewController: UIViewController {
             label.textAlignment = .center
             label.numberOfLines = 2
             label.adjustsFontSizeToFitWidth = true
-            label.frame = CGRect(x: 0, y: 0, width: segmentWidth, height: segmentedControl.frame.height)
             
             segmentedControl.setTitle(nil, forSegmentAt: index)
             
-            let segmentView = segmentedControl.subviews[index]
+            let segmentView = segmentedControl.subviews[(index + (TodoPriority.allCases.count - 1)) % TodoPriority.allCases.count]
             segmentView.addSubview(label)
-
+           
             label.frame = segmentView.bounds
+            
             label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         }
         

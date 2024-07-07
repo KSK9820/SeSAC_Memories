@@ -67,9 +67,8 @@ final class TextViewTableViewCell: UITableViewCell {
 
 extension TextViewTableViewCell: UITextViewDelegate {
     
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+    func textViewDidChange(_ textView: UITextView) {
         delegate?.textViewValueDidChange(value: textView.text)
-        return true
     }
     
 }

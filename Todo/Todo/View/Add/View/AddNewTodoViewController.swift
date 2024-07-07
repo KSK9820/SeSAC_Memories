@@ -25,16 +25,16 @@ final class AddNewTodoViewController: UIViewController {
         configureUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextFieldTableViewCell {
-            cell.removeTextFieldContent()
-        }
-        if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? TextViewTableViewCell {
-            cell.removeTextViewContent()
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextFieldTableViewCell {
+//            cell.removeTextFieldContent()
+//        }
+//        if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? TextViewTableViewCell {
+//            cell.removeTextViewContent()
+//        }
+//    }
     
     @objc
     func appendButtonTapped() {
@@ -87,6 +87,7 @@ final class AddNewTodoViewController: UIViewController {
         tableView.register(LabelTableViewCell.self, forCellReuseIdentifier: LabelTableViewCell.reuseIdentifier)
         
         tableView.backgroundColor = .clear
+        
     }
 }
 
@@ -115,6 +116,7 @@ extension AddNewTodoViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.setPlaceholder(tableViewSectionTitle[indexPath.section][indexPath.row])
                 cell.backgroundColor = TodoColor.cellBackgroundColor
                 cell.delegate = self
+                cell.selectionStyle = .none
                 
                 return cell
             }
@@ -124,13 +126,16 @@ extension AddNewTodoViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.setPlaceholder(tableViewSectionTitle[indexPath.section][indexPath.row])
                 cell.backgroundColor = TodoColor.cellBackgroundColor
                 cell.delegate = self
+                cell.selectionStyle = .none
                 
                 return cell
             }
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: LabelTableViewCell.reuseIdentifier) as? LabelTableViewCell else { return UITableViewCell() }
+            
             cell.setTitle(tableViewSectionTitle[indexPath.section][indexPath.row])
             cell.backgroundColor = TodoColor.cellBackgroundColor
+            cell.selectionStyle = .none
             
             return cell
         }
@@ -141,21 +146,26 @@ extension AddNewTodoViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 1:
             let vc = DueDateViewController()
+            
             vc.saveDueDate = { value in
                 if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? LabelTableViewCell {
-                    cell.setContent(value.ymdToString(.ymd))
+                    cell.setContent(value.toString(.ymd))
                 }
+                self.viewModel.saveDueDate(value)
             }
+            
             self.navigationController?.pushViewController(vc, animated: false)
         case 2:
             let vc = TagViewController()
             
-            vc.saveTag = { value in
+            vc.saveTag = { [weak self] value in
                 if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? LabelTableViewCell {
                     if let value {
                         cell.setContent("# \(value)")
+                        self?.viewModel.saveTag(value)
                     }
                 }
+                
             }
             
             self.navigationController?.pushViewController(vc, animated: false)
@@ -180,6 +190,7 @@ extension AddNewTodoViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as? LabelTableViewCell {
             if let result = notification.userInfo?["priority"] as? Int {
                 cell.setContent(TodoPriority.allCases[result].rawValue)
+                self.viewModel.savePriority(result)
             }
         }
     }

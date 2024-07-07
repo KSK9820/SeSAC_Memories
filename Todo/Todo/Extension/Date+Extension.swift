@@ -13,7 +13,7 @@ extension Date {
         case ymd = "yyyy.MM.dd"
     }
     
-    func ymdToString(_ format: dateFormat) -> String {
+    func toString(_ format: dateFormat) -> String {
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = format.rawValue

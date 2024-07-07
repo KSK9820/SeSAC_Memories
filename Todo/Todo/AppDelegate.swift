@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 테이블 구조에 변경이 없으면 version은 0
+        // 가장 최신 스키마 버전을 수기로 입력해야함
+        let config = Realm.Configuration(schemaVersion: 1) { migration, oldSchemaVersion in
+            
+            // 변경 사항에 대해 작성
+            if oldSchemaVersion < 1 {
+                // folder colum add
+                // Realm에서는 단순 컬럼, 테이블 추가나 삭제 등의 경우에는 코드 X
+            }
+        }
+        
+        Realm.Configuration.defaultConfiguration = config
+        
+        
         return true
     }
 

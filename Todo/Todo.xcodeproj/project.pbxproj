@@ -29,6 +29,7 @@
 		533E12EE2C34705600885FAA /* TodoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12ED2C34705600885FAA /* TodoListTableViewCell.swift */; };
 		533E12F12C34721F00885FAA /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12F02C34721F00885FAA /* TodoListViewModel.swift */; };
 		536C64C92C36889D00890316 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C64C82C36889D00890316 /* UIViewController+Extension.swift */; };
+		537A27F82C3ABFAB00173670 /* ClassifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A27F72C3ABFAB00173670 /* ClassifyViewController.swift */; };
 		53DE68A02C35A31F00873565 /* DueDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DE689F2C35A31F00873565 /* DueDateViewController.swift */; };
 		53DE68A32C35AA6900873565 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DE68A22C35AA6900873565 /* Date+Extension.swift */; };
 		53DE68A52C35BB6700873565 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DE68A42C35BB6700873565 /* TagViewController.swift */; };
@@ -58,6 +59,7 @@
 		533E12ED2C34705600885FAA /* TodoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewCell.swift; sourceTree = "<group>"; };
 		533E12F02C34721F00885FAA /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
 		536C64C82C36889D00890316 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		537A27F72C3ABFAB00173670 /* ClassifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyViewController.swift; sourceTree = "<group>"; };
 		53DE689F2C35A31F00873565 /* DueDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueDateViewController.swift; sourceTree = "<group>"; };
 		53DE68A22C35AA6900873565 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		53DE68A42C35BB6700873565 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
@@ -230,8 +232,25 @@
 		536C64CA2C368E5100890316 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				537A27F52C3ABF9400173670 /* Classify */,
 				533E12C52C33E03700885FAA /* Add */,
 				533E12E52C34634900885FAA /* List */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		537A27F52C3ABF9400173670 /* Classify */ = {
+			isa = PBXGroup;
+			children = (
+				537A27F62C3ABFA300173670 /* View */,
+			);
+			path = Classify;
+			sourceTree = "<group>";
+		};
+		537A27F62C3ABFA300173670 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				537A27F72C3ABFAB00173670 /* ClassifyViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -342,6 +361,7 @@
 				533E12D72C33EAB100885FAA /* TextFieldTableViewCell.swift in Sources */,
 				533E12DF2C33FF2700885FAA /* LabelTableViewCell.swift in Sources */,
 				533E12AB2C33DDEA00885FAA /* AppDelegate.swift in Sources */,
+				537A27F82C3ABFAB00173670 /* ClassifyViewController.swift in Sources */,
 				536C64C92C36889D00890316 /* UIViewController+Extension.swift in Sources */,
 				533E12AD2C33DDEA00885FAA /* SceneDelegate.swift in Sources */,
 				53DE68A32C35AA6900873565 /* Date+Extension.swift in Sources */,
