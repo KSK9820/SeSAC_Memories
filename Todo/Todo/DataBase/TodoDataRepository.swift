@@ -25,15 +25,21 @@ final class TodoDataRepository {
     }
     
     
-    func readData<T: Object>(type: T.Type, sort: (by: String, order: ReadOrder)? = nil, completion: @escaping (Result<[T], Error>) -> Void) {
+    func readData<T: Object>(type: T.Type, sort: (by: String, order: ReadOrder)? = nil, predicator: NSPredicate? = nil, completion: @escaping (Result<[T], Error>) -> Void) {
         do {
             let realm = try Realm()
             if let sort {
-                let results = Array(realm.objects(type).sorted(byKeyPath: sort.by, ascending: sort.order.boolean))
-                completion(.success(results))
+                var results = realm.objects(type).sorted(byKeyPath: sort.by, ascending: sort.order.boolean)
+                if let predicator {
+                    results = results.filter(predicator)
+                }
+                completion(.success(Array(results)))
             } else {
-                let results = Array(realm.objects(type))
-                completion(.success(results))
+                var results = realm.objects(type)
+                if let predicator {
+                    results = results.filter(predicator)
+                }
+                completion(.success(Array(results)))
             }
         } catch {
             print("Error reading data from Realm: \(error)")

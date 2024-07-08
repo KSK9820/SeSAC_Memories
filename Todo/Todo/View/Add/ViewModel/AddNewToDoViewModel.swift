@@ -36,7 +36,7 @@ final class AddNewToDoViewModel {
         todoData.content = content
     }
     
-    func saveDueDate(_ date: Date?) {
+    func saveDueDate(_ date: Date) {
         todoData.dueDate = date
     }
     

@@ -32,13 +32,14 @@ final class ClassifyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         TodoDataRepository().printURLPath()
         configureHierarchy()
         configureLayout()
         configureUI()
         configureAction()
     }
-    
+
     
     // MARK: - Configure UI
     
@@ -80,8 +81,7 @@ final class ClassifyViewController: UIViewController {
     }
     
     private func configureNavigation() {
-        let optionButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), style: .plain, target: self, action: nil)
-        navigationItem.rightBarButtonItem = optionButton
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), style: .plain, target: self, action: #selector(calendarButtonTapped))
         navigationItem.rightBarButtonItem?.tintColor = .white
 
         navigationItem.title = "전체"
@@ -117,6 +117,13 @@ final class ClassifyViewController: UIViewController {
         let navController = UINavigationController(rootViewController: vc)
         
         present(navController, animated: true, completion: nil)
+    }
+    
+    @objc
+    private func calendarButtonTapped() {
+        let vc = CalendarViewController()
+        
+        navigationController?.pushViewController(vc, animated: false)
     }
 }
 

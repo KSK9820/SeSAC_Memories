@@ -17,7 +17,7 @@ final class DueDateViewController: UIViewController {
         
         view.datePickerMode = .date
         view.preferredDatePickerStyle = .wheels
-        view.locale = Locale(identifier: "ko-KR")
+        view.locale = Locale(identifier: "ko_KR")
         view.tintColor = .white
         
         view.setValue(UIColor.white, forKeyPath: "textColor")

@@ -9,6 +9,7 @@ import Foundation
 
 final class TodoListViewModel {
     
+    private let fileManager = ImageFileManager()
     private let repository = TodoDataRepository()
     
     private(set) var todoData = Binding<[TodoDTO]?>(nil)
@@ -59,6 +60,10 @@ final class TodoListViewModel {
     
     private func removeTodoData(_ indexPath: IndexPath, completion: @escaping (Bool) -> Void) {
         if let data = todoData.value?[indexPath.row] {
+            if let imageName = data.imageName {
+                fileManager.removeImageFromDocument(filename: imageName)
+            }
+            
             repository.removeData(data) { result in
                 completion(result)
             }
