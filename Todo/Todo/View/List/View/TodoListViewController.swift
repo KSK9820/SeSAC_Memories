@@ -13,6 +13,8 @@ final class TodoListViewController: UIViewController {
     
     private let viewModel: TodoListViewModel
     
+    private var searchController = UISearchController()
+    
     private let tableView = UITableView()
     
     var backAction: (() -> Void)?
@@ -59,6 +61,7 @@ final class TodoListViewController: UIViewController {
         view.backgroundColor = TodoColor.backgroundColor
         configureNavigation()
         configureTableView()
+        configureSearchController()
     }
     
     private func configureNavigation() {
@@ -74,7 +77,6 @@ final class TodoListViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         navigationItem.largeTitleDisplayMode = .automatic
-        
     }
     
     private func configureTableView() {
@@ -85,6 +87,34 @@ final class TodoListViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         tableView.backgroundColor = .clear
+    }
+    
+    private func configureSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search Todos"
+        
+        searchController.searchBar.searchBarStyle = .minimal
+        
+        // 검색 바 스타일 설정
+        searchController.searchBar.searchBarStyle = .minimal
+        searchController.searchBar.barTintColor = .white
+        searchController.searchBar.tintColor = .black
+        
+        // 검색 바 텍스트 필드 스타일 설정
+        if let textField = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+            textField.backgroundColor = .white
+            textField.textColor = .black
+            if let backgroundView = textField.subviews.first {
+                backgroundView.backgroundColor = .white
+                backgroundView.layer.cornerRadius = 10
+                backgroundView.clipsToBounds = true
+            }
+        }
+        
+        navigationItem.searchController = searchController
+        
+        definesPresentationContext = true
     }
     
     private func createMenu() -> UIMenu {
@@ -142,7 +172,7 @@ extension TodoListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.finishTodo = { [weak self] in
             self?.viewModel.updateToggleData(indexPath, item: "isFinished")
         }
-      
+        
         return cell
     }
     
@@ -157,4 +187,15 @@ extension TodoListViewController: UITableViewDataSource, UITableViewDelegate {
         return UISwipeActionsConfiguration(actions: [remove, fix])
     }
     
+}
+
+
+extension TodoListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {
+            viewModel.readTodoData()
+            return
+        }
+        viewModel.readTodoData(search: searchText)
+    }
 }

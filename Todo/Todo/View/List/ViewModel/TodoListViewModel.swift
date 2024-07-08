@@ -13,6 +13,8 @@ final class TodoListViewModel {
     private let repository = TodoDataRepository()
     
     private(set) var todoData = Binding<[TodoDTO]?>(nil)
+    private(set) var filteredTodoData = Binding<[TodoDTO]?>(nil)
+    
     var classifyType: ClassifyTodo
     
     init(_ classifyType: ClassifyTodo) {
@@ -20,8 +22,12 @@ final class TodoListViewModel {
         readTodoData()
     }
     
-    func readTodoData(sort: (by: String, order: ReadOrder)? = nil) {
-        repository.readData(type: TodoDTO.self, sort: sort) { result in
+    func readTodoData(sort: (by: String, order: ReadOrder)? = nil, search: String? = nil) {
+        var predicate: NSPredicate?
+        if let search {
+            predicate = createPredicate(for: search)
+        }
+        repository.readData(type: TodoDTO.self, sort: sort, predicator: predicate) { result in
             switch result {
             case .success(let data):
                 let fixData = data.filter { $0.isFix == true }
@@ -44,6 +50,11 @@ final class TodoListViewModel {
                 print(error)
             }
         }
+    }
+    
+    private func createPredicate(for searchText: String) -> NSPredicate {
+        let predicate = NSPredicate(format: "title CONTAINS[c] %@ OR content CONTAINS[c] %@", searchText, searchText)
+        return predicate
     }
     
 
