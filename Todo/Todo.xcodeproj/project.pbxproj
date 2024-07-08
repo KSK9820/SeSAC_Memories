@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53086A982C3BEA870029E399 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53086A972C3BEA870029E399 /* ImagePickerViewController.swift */; };
+		53086A9A2C3C34E40029E399 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53086A992C3C34E40029E399 /* ImageFileManager.swift */; };
 		533E12AB2C33DDEA00885FAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12AA2C33DDEA00885FAA /* AppDelegate.swift */; };
 		533E12AD2C33DDEA00885FAA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12AC2C33DDEA00885FAA /* SceneDelegate.swift */; };
 		533E12AF2C33DDEA00885FAA /* AddNewTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E12AE2C33DDEA00885FAA /* AddNewTodoViewController.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		53086A972C3BEA870029E399 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		53086A992C3C34E40029E399 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		533E12A72C33DDEA00885FAA /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		533E12AA2C33DDEA00885FAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		533E12AC2C33DDEA00885FAA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 				53DE689F2C35A31F00873565 /* DueDateViewController.swift */,
 				53DE68A42C35BB6700873565 /* TagViewController.swift */,
 				53DE68A62C35BEA700873565 /* PriorityViewController.swift */,
+				53086A972C3BEA870029E399 /* ImagePickerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 		533E12D02C33E98900885FAA /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				53086A992C3C34E40029E399 /* ImageFileManager.swift */,
 				533E12D12C33E99B00885FAA /* ReuseIdentifiable.swift */,
 				533E12D32C33E9AE00885FAA /* Binding.swift */,
 			);
@@ -376,8 +382,10 @@
 				533E12C82C33E05000885FAA /* AddNewToDoViewModel.swift in Sources */,
 				533E12D72C33EAB100885FAA /* TextFieldTableViewCell.swift in Sources */,
 				533E12DF2C33FF2700885FAA /* LabelTableViewCell.swift in Sources */,
+				53086A9A2C3C34E40029E399 /* ImageFileManager.swift in Sources */,
 				533E12AB2C33DDEA00885FAA /* AppDelegate.swift in Sources */,
 				537A27F82C3ABFAB00173670 /* ClassifyViewController.swift in Sources */,
+				53086A982C3BEA870029E399 /* ImagePickerViewController.swift in Sources */,
 				536C64C92C36889D00890316 /* UIViewController+Extension.swift in Sources */,
 				533E12AD2C33DDEA00885FAA /* SceneDelegate.swift in Sources */,
 				53DE68A32C35AA6900873565 /* Date+Extension.swift in Sources */,

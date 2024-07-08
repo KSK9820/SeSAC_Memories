@@ -32,7 +32,7 @@ final class ClassifyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        TodoDataRepository().printURLPath()
         configureHierarchy()
         configureLayout()
         configureUI()

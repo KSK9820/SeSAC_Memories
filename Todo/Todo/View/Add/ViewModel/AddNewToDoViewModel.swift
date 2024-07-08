@@ -10,6 +10,7 @@ import Foundation
 final class AddNewToDoViewModel {
     
     private let repository = TodoDataRepository()
+    private let fileManager = ImageFileManager()
     
     private(set) var todoData = TodoDTO(title: "")
     
@@ -47,6 +48,10 @@ final class AddNewToDoViewModel {
         todoData.priority = priority
     }
     
+    func saveImage(_ image: Data) {
+        fileManager.saveImageToDocument(data: image, filename: "\(todoData.id)")
+        todoData.imageName = "\(todoData.id).jpg"
+    }
     
     private func saveTodoData(_ completion: @escaping ((Bool) -> Void)) {
         repository.saveData(todoData) { result in

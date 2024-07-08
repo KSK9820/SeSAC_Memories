@@ -53,6 +53,8 @@ final class PriorityViewController: UIViewController {
     
     // 순서대로 나오지 않는 문제가 있음
     private func configureUI() {
+        view.backgroundColor = .black
+        
         let segmentWidth = segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments)
        
         for index in 0..<segmentedControl.numberOfSegments {

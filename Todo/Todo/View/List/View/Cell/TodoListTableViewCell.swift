@@ -9,6 +9,8 @@ import UIKit
 
 final class TodoListTableViewCell: UITableViewCell {
     
+    private let fileManager = ImageFileManager()
+    
     var indexPath: IndexPath?
     var finishTodo: (() -> Void)?
     
@@ -27,6 +29,14 @@ final class TodoListTableViewCell: UITableViewCell {
         
         view.setImage(UIImage(systemName: "circle"), for: .normal)
         view.tintColor = .white
+        
+        return view
+    }()
+    
+    private let todoImageView = {
+        let view = UIImageView()
+       
+        view.contentMode = .scaleAspectFit
         
         return view
     }()
@@ -106,6 +116,11 @@ final class TodoListTableViewCell: UITableViewCell {
         dateLabel.text = data.dueDate?.toString(.ymd)
         tagLabel.text = data.tag
         circleButton.setImage(UIImage(systemName: data.isFinished ? "circle.circle.fill" : "circle"), for: .normal)
+        if let image = data.imageName {
+            todoImageView.image = fileManager.loadImageToDocument(filename: image)
+        } else {
+            todoImageView.isHidden = true
+        }
     }
     
     func setIndexPath(_ indexPath: IndexPath) {
@@ -117,6 +132,7 @@ final class TodoListTableViewCell: UITableViewCell {
     
     private func configureHierarchy() {
         horizontalStackView.addArrangedSubview(circleButton)
+        horizontalStackView.addArrangedSubview(todoImageView)
         horizontalStackView.addArrangedSubview(verticalStackView)
         verticalStackView.addArrangedSubview(titleLabel)
         verticalStackView.addArrangedSubview(contentLabel)
@@ -129,6 +145,11 @@ final class TodoListTableViewCell: UITableViewCell {
     private func configureLayout() {
         circleButton.snp.makeConstraints { make in
             make.width.equalTo(24)
+        }
+        
+        todoImageView.snp.makeConstraints { make in
+            make.width.equalTo(40)
+            make.height.equalTo(50)
         }
         
         horizontalStackView.snp.makeConstraints { make in

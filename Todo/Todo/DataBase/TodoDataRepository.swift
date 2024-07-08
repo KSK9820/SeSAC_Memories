@@ -69,4 +69,13 @@ final class TodoDataRepository {
         }
     }
     
+    func printURLPath() {
+        do {
+            let realm = try Realm()
+            print(realm.configuration.fileURL)
+        } catch {
+            print(error)
+        }
+    }
+    
 }

@@ -191,6 +191,16 @@ extension AddNewTodoViewController: UITableViewDelegate, UITableViewDataSource {
                 object: nil)
             
             self.navigationController?.pushViewController(vc, animated: false)
+        case 4:
+            let vc = ImagePickerViewController()
+            
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(ImageReceivedNotification),
+                name: NSNotification.Name("imageReceived"),
+                object: nil)
+            
+            self.navigationController?.pushViewController(vc, animated: false)
         default:
             break
             
@@ -204,6 +214,13 @@ extension AddNewTodoViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.setContent(TodoPriority.allCases[result].rawValue)
                 self.viewModel.savePriority(result)
             }
+        }
+    }
+    
+    @objc
+    private func ImageReceivedNotification(notification: Notification) {
+        if var result = notification.userInfo?["image"] as? Data {
+            self.viewModel.saveImage(result)
         }
     }
     

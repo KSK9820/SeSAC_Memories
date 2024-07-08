@@ -56,6 +56,7 @@ final class TagViewController: UIViewController {
     }
     
     private func configureUI() {
+        view.backgroundColor = .black
         configureNavigation()
     }
     

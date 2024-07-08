@@ -50,6 +50,7 @@ final class DueDateViewController: UIViewController {
     }
     
     private func configureUI() {
+        view.backgroundColor = .black
         configureNavigation()
     }
     

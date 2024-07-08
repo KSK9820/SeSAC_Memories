@@ -15,12 +15,12 @@ final class TodoDTO: Object {
     @Persisted var dueDate: Date?
     @Persisted var tag: String?
     @Persisted var priority: Int?
-    @Persisted var Image: Data?
+    @Persisted var imageName: String?
     @Persisted var isFix: Bool
     @Persisted var isFinished: Bool
     
     
-    convenience init(title: String, content: String? = nil, dueDate: Date? = nil, tag: String? = nil, priority: Int? = nil, Image: Data? = nil, isFix: Bool = false, isFinished: Bool = false) {
+    convenience init(title: String, content: String? = nil, dueDate: Date? = nil, tag: String? = nil, priority: Int? = nil, imageName: String? = nil, isFix: Bool = false, isFinished: Bool = false) {
         self.init()
         self.id = id
         self.title = title
@@ -28,7 +28,7 @@ final class TodoDTO: Object {
         self.dueDate = dueDate
         self.tag = tag
         self.priority = priority
-        self.Image = Image
+        self.imageName = imageName
         self.isFix = isFix
         self.isFinished = isFinished
     }
