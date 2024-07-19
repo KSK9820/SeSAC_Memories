@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymE-oL-dB0">
-                                <rect key="frame" x="0.0" y="103" width="393" height="50"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YA2-kD-GPj">
                                         <rect key="frame" x="12" y="4" width="369" height="42"/>
@@ -57,7 +57,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4VW-Jo-sfh">
-                                <rect key="frame" x="0.0" y="153" width="393" height="665"/>
+                                <rect key="frame" x="0.0" y="109" width="393" height="709"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -128,12 +128,28 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="P3K-ht-gH8"/>
+                        <segue destination="4hE-ZH-56Z" kind="relationship" relationship="rootViewController" id="CeL-fe-cqa"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hW-Jp-Va2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="54.198473282442748" y="-34.507042253521128"/>
+        </scene>
+        <!--Chatting Collection View Controller-->
+        <scene sceneID="z6O-i3-kFo">
+            <objects>
+                <viewController id="4hE-ZH-56Z" customClass="ChattingCollectionViewController" customModule="Chatting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8fR-Bb-2ny">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="t5a-A5-dha"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="R02-oo-zm1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDQ-6R-TcQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="981" y="704"/>
         </scene>
     </scenes>
     <resources>
