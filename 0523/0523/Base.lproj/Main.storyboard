@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -176,6 +177,22 @@
             <point key="canvasLocation" x="1729.0076335877861" y="-201.40845070422537"/>
         </scene>
         <!--설정-->
+        <scene sceneID="XXN-7P-ZP5">
+            <objects>
+                <viewController id="uSC-cU-ZJ0" customClass="SettingViewController" customModule="_523" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VSY-cX-0Fv">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bTq-h2-ePO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="설정" id="Ggi-NO-zeC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igX-Dh-C6J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1666" y="554"/>
+        </scene>
+        <!--설정-->
         <scene sceneID="2BJ-4b-EHb">
             <objects>
                 <tableViewController id="Xsx-dX-JK4" customClass="SecondTableViewController" customModule="_523" customModuleProvider="target" sceneMemberID="viewController">
@@ -211,7 +228,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n3f-Qt-olA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1729" y="554"/>
+            <point key="canvasLocation" x="2433" y="554"/>
         </scene>
         <!--쇼핑-->
         <scene sceneID="ZYH-iy-Zoj">
@@ -272,6 +289,9 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJP-ia-ALM">
                                             <rect key="frame" x="20" y="11" width="46" height="46"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="sJP-ia-ALM" secondAttribute="height" multiplier="1:1" id="3PB-Hy-UFf"/>
+                                            </constraints>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title=""/>
                                         </button>
@@ -294,7 +314,6 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="sJP-ia-ALM" firstAttribute="width" secondItem="sJP-ia-ALM" secondAttribute="height" multiplier="1:1" id="3PB-Hy-UFf"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="c3u-gA-Mme" secondAttribute="bottom" id="3fO-0z-6PH"/>
                                         <constraint firstItem="sJP-ia-ALM" firstAttribute="leading" secondItem="Try-Le-wNn" secondAttribute="leadingMargin" id="H5X-tI-I1e"/>
                                         <constraint firstItem="3hl-PJ-83N" firstAttribute="bottom" secondItem="Try-Le-wNn" secondAttribute="bottomMargin" id="Qki-zs-1aC"/>
@@ -371,7 +390,7 @@
         <!--Item-->
         <scene sceneID="JTh-Zi-PSL">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yt3-Dz-eRh" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yt3-Dz-eRh" customClass="Setting" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="X8V-rE-vHy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9ql-Zd-3k9">
@@ -380,7 +399,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Xsx-dX-JK4" kind="relationship" relationship="rootViewController" id="npD-nR-YXl"/>
+                        <segue destination="uSC-cU-ZJ0" kind="relationship" relationship="rootViewController" id="pUM-bb-m1F"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WPf-al-1Xu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
