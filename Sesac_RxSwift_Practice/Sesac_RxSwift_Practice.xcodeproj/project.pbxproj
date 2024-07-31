@@ -22,6 +22,9 @@
 		5347D68A2C59559100FEB0A5 /* SimpleUISwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347D6892C59559100FEB0A5 /* SimpleUISwitchViewController.swift */; };
 		5347D68C2C59568D00FEB0A5 /* SimpleTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347D68B2C59568D00FEB0A5 /* SimpleTextFieldViewController.swift */; };
 		5347D68E2C595EC900FEB0A5 /* ObervableExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347D68D2C595EC900FEB0A5 /* ObervableExample.swift */; };
+		5347D6932C5A914900FEB0A5 /* AddingNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347D6922C5A914900FEB0A5 /* AddingNumberViewController.swift */; };
+		5347D6952C5A938100FEB0A5 /* SimpleValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347D6942C5A938100FEB0A5 /* SimpleValidationViewController.swift */; };
+		5347D6972C5A984D00FEB0A5 /* SimpleTableView2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347D6962C5A984D00FEB0A5 /* SimpleTableView2Controller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		5347D6892C59559100FEB0A5 /* SimpleUISwitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleUISwitchViewController.swift; sourceTree = "<group>"; };
 		5347D68B2C59568D00FEB0A5 /* SimpleTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTextFieldViewController.swift; sourceTree = "<group>"; };
 		5347D68D2C595EC900FEB0A5 /* ObervableExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObervableExample.swift; sourceTree = "<group>"; };
+		5347D6922C5A914900FEB0A5 /* AddingNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingNumberViewController.swift; sourceTree = "<group>"; };
+		5347D6942C5A938100FEB0A5 /* SimpleValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleValidationViewController.swift; sourceTree = "<group>"; };
+		5347D6962C5A984D00FEB0A5 /* SimpleTableView2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableView2Controller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,9 @@
 				5347D6892C59559100FEB0A5 /* SimpleUISwitchViewController.swift */,
 				5347D68B2C59568D00FEB0A5 /* SimpleTextFieldViewController.swift */,
 				5347D68D2C595EC900FEB0A5 /* ObervableExample.swift */,
+				5347D6922C5A914900FEB0A5 /* AddingNumberViewController.swift */,
+				5347D6942C5A938100FEB0A5 /* SimpleValidationViewController.swift */,
+				5347D6962C5A984D00FEB0A5 /* SimpleTableView2Controller.swift */,
 			);
 			path = RxCocoa_Practice;
 			sourceTree = "<group>";
@@ -183,10 +192,13 @@
 			files = (
 				5347D68E2C595EC900FEB0A5 /* ObervableExample.swift in Sources */,
 				5347D68C2C59568D00FEB0A5 /* SimpleTextFieldViewController.swift in Sources */,
+				5347D6952C5A938100FEB0A5 /* SimpleValidationViewController.swift in Sources */,
 				5347D6832C58DFB200FEB0A5 /* ButtonViewController.swift in Sources */,
 				5347D6682C58D63F00FEB0A5 /* ViewController.swift in Sources */,
 				5347D6642C58D63F00FEB0A5 /* AppDelegate.swift in Sources */,
 				5347D6882C59541200FEB0A5 /* SimpleTableViewController.swift in Sources */,
+				5347D6932C5A914900FEB0A5 /* AddingNumberViewController.swift in Sources */,
+				5347D6972C5A984D00FEB0A5 /* SimpleTableView2Controller.swift in Sources */,
 				5347D6862C59526100FEB0A5 /* SimplePickerViewController.swift in Sources */,
 				5347D68A2C59559100FEB0A5 /* SimpleUISwitchViewController.swift in Sources */,
 				5347D6662C58D63F00FEB0A5 /* SceneDelegate.swift in Sources */,
