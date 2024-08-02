@@ -107,8 +107,8 @@ class BirthdayViewController: UIViewController {
         signInValid
             .bind(with: self) { owner, value in
                 owner.ageValidText.accept(value ? "가입 가능한 나이입니다" : "만 17세 이상만 가입 가능합니다")
-                let buttonColor: UIColor = value ? .systemPink : .gray
-                let labelColor: UIColor = value ? .gray : .systemPink
+                let buttonColor: UIColor = value ? .blue : .lightGray
+                let labelColor: UIColor = value ? .blue : .systemPink
                 owner.nextButton.backgroundColor = buttonColor
                 owner.infoLabel.textColor = labelColor
                 
@@ -136,13 +136,23 @@ class BirthdayViewController: UIViewController {
         
         nextButton.rx.tap
             .bind(with: self) { owner, _ in
-                owner.navigationController?.pushViewController(SearchViewController(), animated: true)
+                owner.showAlert()
             }
             .disposed(by: disposeBag)
-        
+            
     }
     
-
+   
+    private func showAlert() {
+        let alert = UIAlertController(title: "가입 완료", message: "가입을 축하합니다!", preferredStyle: .alert)
+        let conform = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            self?.navigationController?.pushViewController(SearchViewController(), animated: true)
+        }
+        
+        alert.addAction(conform)
+        
+        present(alert, animated: true)
+    }
     
     func configureLayout() {
         view.addSubview(infoLabel)
