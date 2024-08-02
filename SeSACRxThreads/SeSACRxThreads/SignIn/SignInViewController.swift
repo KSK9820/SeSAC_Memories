@@ -7,24 +7,61 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
+
 
 class SignInViewController: UIViewController {
-
+    
     let emailTextField = SignTextField(placeholderText: "이메일을 입력해주세요")
     let passwordTextField = SignTextField(placeholderText: "비밀번호를 입력해주세요")
     let signInButton = PointButton(title: "로그인")
     let signUpButton = UIButton()
     
+    let validation = BehaviorSubject(value: false)
+    
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = Color.white
         
         configureLayout()
         configure()
         
         signUpButton.addTarget(self, action: #selector(signUpButtonClicked), for: .touchUpInside)
+        
+        bind()
     }
+    
+    private func bind() {
+        validation
+            .bind(to: signInButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        Observable.zip(
+            emailTextField.rx.text.orEmpty,
+            passwordTextField.rx.text.orEmpty
+        )
+        .bind(with: self) { owner, value in
+            if value.0.contains("@") && value.1.count >= 8 {
+                owner.validation.onNext(true)
+                owner.signInButton.backgroundColor = .blue
+            } else {
+                owner.validation.onNext(false)
+                owner.signInButton.backgroundColor = .lightGray
+            }
+        }
+        .disposed(by: disposeBag)
+        
+        signInButton.rx.tap
+            .bind(with: self) { owner, _ in
+                
+            }
+            .disposed(by: disposeBag)
+    }
+    
     
     @objc func signUpButtonClicked() {
         navigationController?.pushViewController(SignUpViewController(), animated: true)
@@ -67,5 +104,5 @@ class SignInViewController: UIViewController {
         }
     }
     
-
+    
 }
