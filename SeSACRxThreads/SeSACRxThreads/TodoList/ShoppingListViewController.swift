@@ -48,8 +48,20 @@ final class ShoppingListViewController: UIViewController {
     
     private func bind() {
         searchTextField.rx.text.orEmpty
-            .bind(to: searchTitle)
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .bind(with: self, onNext: { owner, value in
+                owner.searchTitle.onNext(value)
+                
+                if value.isEmpty {
+                    owner.list.onNext(owner.data)
+                } else {
+                    let searchData = owner.data.filter { $0.title.contains(value) }
+                    owner.list.onNext(searchData)
+                }
+            })
             .disposed(by: disposeBag)
+        
         
         searchTitle
             .map { !$0.isEmpty }
@@ -90,6 +102,12 @@ final class ShoppingListViewController: UIViewController {
                         owner.list.onNext(owner.data)
                     }
                     .disposed(by: cell.disposeBag)
+            }
+            .disposed(by: disposeBag)
+        
+        tableView.rx.itemSelected
+            .bind(with: self) { owner, indexPath in
+                owner.navigationController?.pushViewController(UIViewController(), animated: false)
             }
             .disposed(by: disposeBag)
     }
