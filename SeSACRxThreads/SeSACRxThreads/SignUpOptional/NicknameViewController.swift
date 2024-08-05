@@ -12,6 +12,9 @@ import RxCocoa
 
 class NicknameViewController: UIViewController {
    
+    let viewModel = NicknameViewModel()
+    
+    
     let nicknameTextField = SignTextField(placeholderText: "닉네임을 입력해주세요")
     let nextButton = PointButton(title: "다음")
     
@@ -30,21 +33,25 @@ class NicknameViewController: UIViewController {
     
     private func bind() {
         
-        let validation = nicknameTextField.rx.text.orEmpty
-            .map { $0.count > 0 }
+        let input = NicknameViewModel.Input(tap: nextButton.rx.tap, text: nicknameTextField.rx.text)
+        let output = viewModel.transform(input: input)
         
-        validation
+        output.validation
             .bind(to: nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        validation
+        output.validation
             .bind(with: self) { owner, value in
                 let color: UIColor = value ? .systemPink : .lightGray
                 owner.nextButton.backgroundColor = color
             }
             .disposed(by: disposeBag)
         
-        nextButton.rx.tap
+        output.validText
+            .bind(to: nextButton.rx.title())
+            .disposed(by: disposeBag)
+        
+        output.tap
             .bind(with: self) { owner, _ in
                 owner.navigationController?.pushViewController(BirthdayViewController(), animated: true)
             }

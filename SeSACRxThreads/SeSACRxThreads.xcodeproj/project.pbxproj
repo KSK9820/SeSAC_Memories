@@ -31,6 +31,7 @@
 		04F6DBFE2C5B0C0300667F4D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6DBFD2C5B0C0300667F4D /* SearchViewController.swift */; };
 		04F6DC002C5B0C2200667F4D /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6DBFF2C5B0C2200667F4D /* SearchTableViewCell.swift */; };
 		04F6DC022C5B0D8200667F4D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6DC012C5B0D8200667F4D /* DetailViewController.swift */; };
+		534BE8512C6135DE001F8924 /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534BE8502C6135DE001F8924 /* NicknameViewModel.swift */; };
 		539A6BD02C5DC95C00C97588 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A6BCF2C5DC95C00C97588 /* ShoppingListViewController.swift */; };
 		539A6BD22C5DC99D00C97588 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A6BD12C5DC99D00C97588 /* Then.swift */; };
 		539A6BD42C5DCCE800C97588 /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A6BD32C5DCCE800C97588 /* ShoppingListTableViewCell.swift */; };
@@ -80,6 +81,7 @@
 		04F6DBFD2C5B0C0300667F4D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		04F6DBFF2C5B0C2200667F4D /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		04F6DC012C5B0D8200667F4D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		534BE8502C6135DE001F8924 /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 		539A6BCF2C5DC95C00C97588 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		539A6BD12C5DC99D00C97588 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		539A6BD32C5DCCE800C97588 /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				0412806E2AEFAD2D00972552 /* BirthdayViewController.swift */,
 				041280702AEFAD3D00972552 /* PhoneViewController.swift */,
 				041280722AEFAD4B00972552 /* NicknameViewController.swift */,
+				534BE8502C6135DE001F8924 /* NicknameViewModel.swift */,
 			);
 			path = SignUpOptional;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				041280732AEFAD4B00972552 /* NicknameViewController.swift in Sources */,
 				0412806A2AEFA91E00972552 /* SignUpViewController.swift in Sources */,
 				539A6BD02C5DC95C00C97588 /* ShoppingListViewController.swift in Sources */,
+				534BE8512C6135DE001F8924 /* NicknameViewModel.swift in Sources */,
 				041280712AEFAD3D00972552 /* PhoneViewController.swift in Sources */,
 				041280262AEF9BAB00972552 /* SceneDelegate.swift in Sources */,
 				041280582AEFA05300972552 /* SignInViewModel.swift in Sources */,
