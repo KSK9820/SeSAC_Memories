@@ -12,9 +12,7 @@ import RxCocoa
 
 final class ShoppingListViewController: UIViewController {
     
-    private var data = [ShoppingList]()
-    private lazy var list = BehaviorSubject(value: self.data)
-    private let searchTitle = BehaviorSubject(value: "")
+    private let viewModel = ShoppingListViewModel()
     
     private let disposeBag = DisposeBag()
     
@@ -47,63 +45,52 @@ final class ShoppingListViewController: UIViewController {
     }
     
     private func bind() {
-        searchTextField.rx.text.orEmpty
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
-            .distinctUntilChanged()
-            .bind(with: self, onNext: { owner, value in
-                owner.searchTitle.onNext(value)
-                
-                if value.isEmpty {
-                    owner.list.onNext(owner.data)
-                } else {
-                    let searchData = owner.data.filter { $0.title.contains(value) }
-                    owner.list.onNext(searchData)
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        
-        searchTitle
-            .map { !$0.isEmpty }
-            .bind(to: addButton.rx.isEnabled)
-            .disposed(by: disposeBag)
-        
-        addButton.rx.tap
-            .withLatestFrom(searchTextField.rx.text.orEmpty) { _, title in
-                return title
-            }
-            .bind(with: self) { owner, value in
-                let shoppingData = ShoppingList(title: value)
-                owner.data.append(shoppingData)
-                owner.list.onNext(owner.data)
-                owner.searchTextField.text = ""
-                owner.searchTitle.onNext("")
-            }
-            .disposed(by: disposeBag)
-        
-        list
+        let input = ShoppingListViewModel.Input(
+            addButtonTap: addButton.rx.tap,
+            addText: searchTextField.rx.text.orEmpty,
+            searchText: searchTextField.rx.text.orEmpty
+                .debounce(.seconds(1), scheduler: MainScheduler.instance)
+                .distinctUntilChanged()
+        )
+        let output = viewModel.transform(input: input)
+    
+        output.shoppingList
             .bind(to: tableView.rx.items(cellIdentifier: ShoppingListTableViewCell.reuseIdentifier, cellType: ShoppingListTableViewCell.self)) { (row, element, cell) in
                 
                 cell.setContents(element)
-                
-                cell.checkboxButton.rx.tap
-                    .bind(with: self) { owner, _ in
-                        owner.data[row].done.toggle()
-                        cell.toggleCheckbox(owner.data[row].done)
-                        owner.list.onNext(owner.data)
-                    }
-                    .disposed(by: cell.disposeBag)
-                
-                cell.starButton.rx.tap
-                    .bind(with: self) { owner, _ in
-                        owner.data[row].star.toggle()
-                        owner.data = owner.data.sorted { $0.date < $1.date }.sorted { $0.star && !$1.star }
-                        cell.toggleCheckbox(owner.data[row].star)
-                        owner.list.onNext(owner.data)
-                    }
-                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
+    
+        output.addButtonTap
+            .map { "" }
+            .bind(to: searchTextField.rx.text)
+            .disposed(by: disposeBag)
+//
+//                cellOutput.shoppingList
+//                    .bind(with: self) { onwer, value in
+//                        cell.toggleCheckbox(value.done)
+//                    }
+//                    .disposed(by: cell.disposeBag)
+//                cell.checkboxButton.rx.tap
+//                    .bind(with: self) { owner, _ in
+//                        owner.data[row].done.toggle()
+//                        cell.toggleCheckbox(owner.data[row].done)
+//                        owner.list.onNext(owner.data)
+//                    }
+//                    .disposed(by: cell.disposeBag)
+//                
+//                cell.starButton.rx.tap
+//                    .bind(with: self) { owner, _ in
+//                        owner.data[row].star.toggle()
+//                        owner.data = owner.data.sorted { $0.date < $1.date }.sorted { $0.star && !$1.star }
+//                        cell.toggleCheckbox(owner.data[row].star)
+//                        owner.list.onNext(owner.data)
+//                    }
+//                    .disposed(by: cell.disposeBag)
+//            }
+//            .disposed(by: disposeBag)
+//        
+
         
         tableView.rx.itemSelected
             .bind(with: self) { owner, indexPath in
