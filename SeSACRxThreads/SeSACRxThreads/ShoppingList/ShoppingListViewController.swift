@@ -29,6 +29,11 @@ final class ShoppingListViewController: UIViewController {
         $0.setTitleColor(.black, for: .normal)
         $0.layer.cornerRadius = 10
     }
+    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
+        $0.register(ShoppingListCollectionViewCell.self, forCellWithReuseIdentifier: ShoppingListCollectionViewCell.reuseIdentifier)
+        $0.showsHorizontalScrollIndicator = false
+    }
+    
     private let tableView = UITableView().then {
         $0.register(ShoppingListTableViewCell.self, forCellReuseIdentifier: ShoppingListTableViewCell.reuseIdentifier)
         $0.separatorStyle = .none
@@ -44,20 +49,48 @@ final class ShoppingListViewController: UIViewController {
         bind()
     }
     
+    static func createLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 120, height: 40)
+        layout.scrollDirection = .horizontal
+        return layout
+    }
+    
     private func bind() {
         let input = ShoppingListViewModel.Input(
             addButtonTap: addButton.rx.tap,
             addText: searchTextField.rx.text.orEmpty,
             searchText: searchTextField.rx.text.orEmpty
                 .debounce(.seconds(1), scheduler: MainScheduler.instance)
-                .distinctUntilChanged()
+                .distinctUntilChanged(),
+            selectItem: collectionView.rx.modelSelected(String.self),
+            checkButtonTap: PublishSubject<Int>(),
+            starButtonTap: PublishSubject<Int>()
         )
         let output = viewModel.transform(input: input)
     
+        output.selectList
+            .bind(to: collectionView.rx.items(cellIdentifier: ShoppingListCollectionViewCell.reuseIdentifier, cellType: ShoppingListCollectionViewCell.self)) { (row, element, cell) in
+                cell.label.text = element
+            }
+            .disposed(by: disposeBag)
+          
+        
+        
         output.shoppingList
             .bind(to: tableView.rx.items(cellIdentifier: ShoppingListTableViewCell.reuseIdentifier, cellType: ShoppingListTableViewCell.self)) { (row, element, cell) in
                 
                 cell.setContents(element)
+                cell.checkboxButton.rx.tap
+                    .bind(with: self) { owner, _ in
+                        input.checkButtonTap.onNext(row)
+                    }
+                    .disposed(by: cell.disposeBag)
+                cell.starButton.rx.tap
+                    .bind(with: self) { owner, _ in
+                        input.starButtonTap.onNext(row)
+                    }
+                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
     
@@ -65,33 +98,7 @@ final class ShoppingListViewController: UIViewController {
             .map { "" }
             .bind(to: searchTextField.rx.text)
             .disposed(by: disposeBag)
-//
-//                cellOutput.shoppingList
-//                    .bind(with: self) { onwer, value in
-//                        cell.toggleCheckbox(value.done)
-//                    }
-//                    .disposed(by: cell.disposeBag)
-//                cell.checkboxButton.rx.tap
-//                    .bind(with: self) { owner, _ in
-//                        owner.data[row].done.toggle()
-//                        cell.toggleCheckbox(owner.data[row].done)
-//                        owner.list.onNext(owner.data)
-//                    }
-//                    .disposed(by: cell.disposeBag)
-//                
-//                cell.starButton.rx.tap
-//                    .bind(with: self) { owner, _ in
-//                        owner.data[row].star.toggle()
-//                        owner.data = owner.data.sorted { $0.date < $1.date }.sorted { $0.star && !$1.star }
-//                        cell.toggleCheckbox(owner.data[row].star)
-//                        owner.list.onNext(owner.data)
-//                    }
-//                    .disposed(by: cell.disposeBag)
-//            }
-//            .disposed(by: disposeBag)
-//        
 
-        
         tableView.rx.itemSelected
             .bind(with: self) { owner, indexPath in
                 owner.navigationController?.pushViewController(UIViewController(), animated: false)
@@ -106,13 +113,14 @@ final class ShoppingListViewController: UIViewController {
         [searchTextField, addButton].forEach {
             searchView.addSubview($0)
         }
+        view.addSubview(collectionView)
         view.addSubview(tableView)
     }
     
     private func configureLayout() {
         let safeArea = view.safeAreaLayoutGuide
         searchView.snp.makeConstraints { make in
-            make.top.equalTo(safeArea).offset(30)
+            make.top.equalTo(safeArea).offset(10)
             make.horizontalEdges.equalTo(safeArea).inset(20)
             make.height.equalTo(70)
         }
@@ -126,8 +134,13 @@ final class ShoppingListViewController: UIViewController {
             make.leading.equalToSuperview().offset(20)
             make.centerY.equalToSuperview()
         }
-        tableView.snp.makeConstraints { make in
+        collectionView.snp.makeConstraints { make in
             make.top.equalTo(searchView.snp.bottom).offset(20)
+            make.horizontalEdges.equalTo(safeArea).inset(20)
+            make.height.equalTo(50)
+        }
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(collectionView.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(safeArea).inset(20)
             make.bottom.equalTo(safeArea)
         }
