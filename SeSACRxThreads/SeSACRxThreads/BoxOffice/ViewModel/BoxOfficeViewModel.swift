@@ -41,9 +41,15 @@ final class BoxOfficeViewModel {
             }
             .flatMap { value in
                 MovieNetworkManager.shared.callRequest(date: value)
+                    .asObservable()
             }
             .subscribe(with: self) { owner, value in
-                boxOfficeList.onNext(value.boxOfficeResult.dailyBoxOfficeList)
+                switch value {
+                case .success(let result):
+                    boxOfficeList.onNext(result.boxOfficeResult.dailyBoxOfficeList)
+                case .failure(let error):
+                    print(error)
+                }
             }
             .disposed(by: disposeBag)
             

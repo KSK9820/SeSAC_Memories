@@ -14,30 +14,30 @@ final class MovieNetworkManager {
     
     private init() {}
     
-    func callRequest(date: String) -> Single<MovieModel> {
+    func callRequest(date: String) -> Single<Result<MovieModel, APIError>> {
         let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=\(APIKey.movie)&targetDt=\(date)"
         
-        return Single<MovieModel>.create { single in
+        return Single.create { single -> Disposable in
             guard let url = URL(string: url) else {
-                single(.failure(APIError.invalidURL))
+                single(.success(.failure(.invalidURL)))
                 return Disposables.create()
             }
             
             URLSession.shared.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    single(.failure(APIError.unknownResponse))
+                if error != nil {
+                    single(.success(.failure(.unknownResponse)))
                     return
                 }
                 guard let response = response as? HTTPURLResponse,
                       (200..<300).contains(response.statusCode) else {
-                    single(.failure(APIError.statusError))
+                    single(.success(.failure(.statusError)))
                     return
                 }
                 if let data,
                    let appData = try? JSONDecoder().decode(MovieModel.self, from: data) {
-                    single(.success(appData))
+                    single(.success(.success(appData)))
                 } else {
-                    single(.failure(APIError.unknownResponse))
+                    single(.success(.failure(.unknownResponse)))
                 }
             }.resume()
             

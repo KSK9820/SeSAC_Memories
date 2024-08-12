@@ -246,13 +246,10 @@
 		53526D142C6628E2005C4E15 /* BoxOffice */ = {
 			isa = PBXGroup;
 			children = (
-				53526D152C6628F0005C4E15 /* BoxOfficeViewController.swift */,
-				53526D172C6628F7005C4E15 /* BoxOfficeViewModel.swift */,
-				53526D192C662902005C4E15 /* BoxOfficeCollectionViewCell.swift */,
-				53526D1B2C66290B005C4E15 /* BoxOfficeTableViewCell.swift */,
-				53526D1D2C662924005C4E15 /* MovieModel.swift */,
-				53526D1F2C66292F005C4E15 /* MovieNetworkManager.swift */,
-				53526D212C662F0C005C4E15 /* APIKey.swift */,
+				53D83E0E2C6A0CEA00B86C2A /* Utility */,
+				53D83E0D2C6A0CE400B86C2A /* Model */,
+				53D83E0C2C6A0CDF00B86C2A /* ViewModel */,
+				53D83E0B2C6A0CD500B86C2A /* View */,
 			);
 			path = BoxOffice;
 			sourceTree = "<group>";
@@ -268,6 +265,41 @@
 				53526D122C65F1DF005C4E15 /* ShoppingCollectionViewCell.swift */,
 			);
 			path = ShoppingList;
+			sourceTree = "<group>";
+		};
+		53D83E0B2C6A0CD500B86C2A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				53526D152C6628F0005C4E15 /* BoxOfficeViewController.swift */,
+				53526D1B2C66290B005C4E15 /* BoxOfficeTableViewCell.swift */,
+				53526D192C662902005C4E15 /* BoxOfficeCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		53D83E0C2C6A0CDF00B86C2A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				53526D172C6628F7005C4E15 /* BoxOfficeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		53D83E0D2C6A0CE400B86C2A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				53526D1D2C662924005C4E15 /* MovieModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		53D83E0E2C6A0CEA00B86C2A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				53526D212C662F0C005C4E15 /* APIKey.swift */,
+				53526D1F2C66292F005C4E15 /* MovieNetworkManager.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

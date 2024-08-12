@@ -40,17 +40,17 @@ final class BoxOfficeViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         output.movieList
-            .bind(to: tableView.rx.items(cellIdentifier: BoxOfficeTableViewCell.reuseIdentifier, cellType: BoxOfficeTableViewCell.self)) { (row, element, cell) in
-                
+            .asDriver(onErrorJustReturn: [])
+            .drive(tableView.rx.items(cellIdentifier: BoxOfficeTableViewCell.reuseIdentifier, cellType: BoxOfficeTableViewCell.self)) { (row, element, cell) in
                 cell.movieRank.text = element.rank
                 cell.movieName.text = element.movieNm
                 cell.movieDate.text = element.openDt
-
             }
             .disposed(by: disposeBag)
         
         output.recentList
-            .bind(to: collectionView.rx.items(cellIdentifier: BoxOfficeCollectionViewCell.reuseIdentifier, cellType: BoxOfficeCollectionViewCell.self)) { (row, element, cell) in
+            .asDriver(onErrorJustReturn: [])
+            .drive(collectionView.rx.items(cellIdentifier: BoxOfficeCollectionViewCell.reuseIdentifier, cellType: BoxOfficeCollectionViewCell.self)) { (row, element, cell) in
                 
                 cell.label.text = element
             }
