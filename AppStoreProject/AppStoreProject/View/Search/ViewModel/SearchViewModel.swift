@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class SearchViewModel {
+final class SearchViewModel: BaseViewModel {
     
     var searchResultData = [AppStoreResult]()
     
@@ -38,6 +38,9 @@ final class SearchViewModel {
             .distinctUntilChanged()
             .flatMap {
                 NetworkManager.shared.getSearchData($0)
+                    .catch { error in
+                        return Single<AppStoreDTO>.never()
+                    }
             }
             .subscribe(with: self) { owner, value in
                 owner.searchResultData = value.results

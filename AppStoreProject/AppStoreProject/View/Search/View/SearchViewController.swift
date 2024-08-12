@@ -33,7 +33,6 @@ final class SearchViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        
         configureHierarchy()
         configureLayout()
         configureUI()

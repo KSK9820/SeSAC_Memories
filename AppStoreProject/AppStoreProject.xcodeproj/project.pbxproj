@@ -31,6 +31,7 @@
 		53B3D7B92C691E8200C70B15 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D7B82C691E8200C70B15 /* DetailViewModel.swift */; };
 		53B3D7BB2C6928E700C70B15 /* ScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D7BA2C6928E700C70B15 /* ScreenshotCollectionViewCell.swift */; };
 		53B3D7BE2C6930B300C70B15 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D7BD2C6930B300C70B15 /* Extension+UIViewController.swift */; };
+		53D83E092C6A07DA00B86C2A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D83E082C6A07DA00B86C2A /* BaseViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		53B3D7B82C691E8200C70B15 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		53B3D7BA2C6928E700C70B15 /* ScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
 		53B3D7BD2C6930B300C70B15 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		53D83E082C6A07DA00B86C2A /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		53B3D78D2C68BC5200C70B15 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				53D83E0A2C6A080E00B86C2A /* Protocol */,
 				53B3D7902C68BC6900C70B15 /* Search */,
 				53B3D78E2C68BC5900C70B15 /* TabBarController.swift */,
 			);
@@ -178,6 +181,14 @@
 				53B3D7BD2C6930B300C70B15 /* Extension+UIViewController.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		53D83E0A2C6A080E00B86C2A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				53D83E082C6A07DA00B86C2A /* BaseViewModel.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +279,7 @@
 				53B3D79F2C68BD4F00C70B15 /* ReuseIdentifiable.swift in Sources */,
 				53B3D77C2C68BC2C00C70B15 /* ViewController.swift in Sources */,
 				53B3D7BE2C6930B300C70B15 /* Extension+UIViewController.swift in Sources */,
+				53D83E092C6A07DA00B86C2A /* BaseViewModel.swift in Sources */,
 				53B3D7AA2C68FDAC00C70B15 /* TargetType.swift in Sources */,
 				53B3D7AF2C6904C800C70B15 /* NetworkMananger.swift in Sources */,
 				53B3D7B12C6905E100C70B15 /* SearchViewModel.swift in Sources */,
