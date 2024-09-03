@@ -13,8 +13,9 @@ struct SearchBitCoinView: View {
     @State private var searchData: Markets = []
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             searchListView()
+               
             .navigationTitle("Search")
         }
         .searchable(text: $searchText)
@@ -38,7 +39,12 @@ struct SearchBitCoinView: View {
     func searchListView() -> some View {
         List {
             ForEach($searchData, id: \.self) { item in
-                SearchResultView(item: item)
+                HStack {
+                    NavigationLink(destination: NextView(item: item.wrappedValue)) {
+                        SearchResultView(item: item.wrappedValue)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
             }
             
         }
@@ -48,7 +54,9 @@ struct SearchBitCoinView: View {
 }
 
 struct SearchResultView: View {
-    @Binding var item: Market
+    @State var status = false
+    var item: Market
+    
     
     var body: some View {
         HStack(spacing: 20, content: {
@@ -59,12 +67,21 @@ struct SearchResultView: View {
             }
             Spacer()
             Button {
-                item.status.toggle()
+                status.toggle()
             } label: {
-                Image(systemName: item.status ? "star.fill" : "star")
+                Image(systemName: status ? "star.fill" : "star")
+                    .padding()
             }
             
         })
+    }
+}
+
+struct NextView: View {
+    var item: Market
+    
+    var body: some View {
+        Text(item.englishName)
     }
 }
 
