@@ -13,24 +13,24 @@ struct SearchBitCoinView: View {
     @State private var searchData: Markets = []
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             searchListView()
-               
             .navigationTitle("Search")
         }
         .searchable(text: $searchText)
+        .onSubmit(of: .search) {
+            if searchText == "" {
+                searchData = totalData
+            } else {
+                searchData = totalData.filter { $0.englishName.contains(searchText) }
+            }
+        }
         .task {
             do {
                 totalData = try await UpbitAPI.fetchAllMarket()
                 searchData = totalData
             } catch {
                 print(error)
-            }
-        }
-        .onChange(of: searchText) { oldValue, newValue in
-            searchData = totalData.filter { $0.englishName.contains(newValue) }
-            if newValue == "" {
-                searchData = totalData
             }
         }
         
@@ -41,7 +41,7 @@ struct SearchBitCoinView: View {
             ForEach($searchData, id: \.self) { item in
                 HStack {
                     NavigationLink(destination: NextView(item: item.wrappedValue)) {
-                        SearchResultView(item: item.wrappedValue)
+                        NavigationLazyView(SearchResultView(item: item.wrappedValue))
                     }
                     .buttonStyle(PlainButtonStyle())
                 }

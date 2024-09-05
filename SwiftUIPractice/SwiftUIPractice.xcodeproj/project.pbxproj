@@ -18,6 +18,11 @@
 		536DF1EA2C8724FF0005C0B0 /* SearchBitCoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DF1E92C8724FF0005C0B0 /* SearchBitCoinView.swift */; };
 		536DF1ED2C8729A00005C0B0 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DF1EC2C8729A00005C0B0 /* Market.swift */; };
 		536DF1EF2C8729B70005C0B0 /* UpbitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DF1EE2C8729B70005C0B0 /* UpbitAPI.swift */; };
+		53F54AB52C89B7DF005374C4 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F54AAE2C89B7DF005374C4 /* CategoryView.swift */; };
+		53F54AB62C89B7DF005374C4 /* NavigationBarWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F54AAF2C89B7DF005374C4 /* NavigationBarWrapper.swift */; };
+		53F54AB72C89B7DF005374C4 /* DetailRandomImageVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F54AB12C89B7DF005374C4 /* DetailRandomImageVIew.swift */; };
+		53F54AB82C89B7DF005374C4 /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F54AB22C89B7DF005374C4 /* NavigationLazyView.swift */; };
+		53F54AB92C89B7DF005374C4 /* RandomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F54AB32C89B7DF005374C4 /* RandomImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +38,11 @@
 		536DF1E92C8724FF0005C0B0 /* SearchBitCoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBitCoinView.swift; sourceTree = "<group>"; };
 		536DF1EC2C8729A00005C0B0 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		536DF1EE2C8729B70005C0B0 /* UpbitAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpbitAPI.swift; sourceTree = "<group>"; };
+		53F54AAE2C89B7DF005374C4 /* CategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		53F54AAF2C89B7DF005374C4 /* NavigationBarWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarWrapper.swift; sourceTree = "<group>"; };
+		53F54AB12C89B7DF005374C4 /* DetailRandomImageVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailRandomImageVIew.swift; sourceTree = "<group>"; };
+		53F54AB22C89B7DF005374C4 /* NavigationLazyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
+		53F54AB32C89B7DF005374C4 /* RandomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +75,7 @@
 		5351751E2C85D1F4007A6D7B /* SwiftUIPractice */ = {
 			isa = PBXGroup;
 			children = (
+				53F54AB22C89B7DF005374C4 /* NavigationLazyView.swift */,
 				536DF1EB2C87298F0005C0B0 /* BitCoin */,
 				5351751F2C85D1F4007A6D7B /* SwiftUIPracticeApp.swift */,
 				535175212C85D1F4007A6D7B /* ContentView.swift */,
@@ -74,6 +85,8 @@
 				5351752F2C861EDA007A6D7B /* MBTIView.swift */,
 				535175312C862C09007A6D7B /* FinishView.swift */,
 				535175332C862D30007A6D7B /* ProfileView.swift */,
+				53F54AB02C89B7DF005374C4 /* Category */,
+				53F54AB42C89B7DF005374C4 /* MyRandomImage */,
 			);
 			path = SwiftUIPractice;
 			sourceTree = "<group>";
@@ -94,6 +107,24 @@
 				536DF1EE2C8729B70005C0B0 /* UpbitAPI.swift */,
 			);
 			path = BitCoin;
+			sourceTree = "<group>";
+		};
+		53F54AB02C89B7DF005374C4 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				53F54AAE2C89B7DF005374C4 /* CategoryView.swift */,
+				53F54AAF2C89B7DF005374C4 /* NavigationBarWrapper.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		53F54AB42C89B7DF005374C4 /* MyRandomImage */ = {
+			isa = PBXGroup;
+			children = (
+				53F54AB12C89B7DF005374C4 /* DetailRandomImageVIew.swift */,
+				53F54AB32C89B7DF005374C4 /* RandomImageView.swift */,
+			);
+			path = MyRandomImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,8 +199,13 @@
 			files = (
 				535175302C861EDA007A6D7B /* MBTIView.swift in Sources */,
 				536DF1EF2C8729B70005C0B0 /* UpbitAPI.swift in Sources */,
+				53F54AB62C89B7DF005374C4 /* NavigationBarWrapper.swift in Sources */,
+				53F54AB82C89B7DF005374C4 /* NavigationLazyView.swift in Sources */,
 				535175322C862C09007A6D7B /* FinishView.swift in Sources */,
+				53F54AB72C89B7DF005374C4 /* DetailRandomImageVIew.swift in Sources */,
 				5351752E2C85D222007A6D7B /* LaunchScreenView.swift in Sources */,
+				53F54AB92C89B7DF005374C4 /* RandomImageView.swift in Sources */,
+				53F54AB52C89B7DF005374C4 /* CategoryView.swift in Sources */,
 				536DF1EA2C8724FF0005C0B0 /* SearchBitCoinView.swift in Sources */,
 				535175222C85D1F4007A6D7B /* ContentView.swift in Sources */,
 				535175342C862D30007A6D7B /* ProfileView.swift in Sources */,
